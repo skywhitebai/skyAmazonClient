@@ -1,0 +1,1 @@
+F:\code\C#\amazon\skyAmazonClient\skyAmazonClient\bin\Debug\skyAmazonClient.exe.config
