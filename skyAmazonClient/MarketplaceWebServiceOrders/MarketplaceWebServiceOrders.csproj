@@ -1,53 +1,98 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-	<PropertyGroup>
-		<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-		<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-		<ProjectGuid>d2202e30-4583-4777-bad5-185682bb2c1a</ProjectGuid>
-		<OutputType>Library</OutputType>
-		<AppDesignerFolder>Properties</AppDesignerFolder>
-		<RootNamespace>MarketplaceWebServiceOrders</RootNamespace>
-		<AssemblyName>MarketplaceWebServiceOrders</AssemblyName>
-		<TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-		<FileAlignment>512</FileAlignment>
-	</PropertyGroup>
-	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-		<DebugSymbols>true</DebugSymbols>
-		<DebugType>full</DebugType>
-		<Optimize>false</Optimize>
-		<OutputPath>bin\Debug\</OutputPath>
-		<DefineConstants>DEBUG;TRACE</DefineConstants>
-		<ErrorReport>prompt</ErrorReport>
-		<WarningLevel>4</WarningLevel>
-	</PropertyGroup>
-	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-		<DebugType>pdbonly</DebugType>
- 		<Optimize>true</Optimize>
-		<OutputPath>bin\Release\</OutputPath>
-		<DefineConstants>TRACE</DefineConstants>
-		<ErrorReport>prompt</ErrorReport>
-		<WarningLevel>4</WarningLevel>
-	</PropertyGroup>
-	<ItemGroup>
-		<Reference Include="System"/>
-		
-		<Reference Include="System.Core"/>
-		<Reference Include="System.Xml.Linq"/>
-		<Reference Include="System.Data.DataSetExtensions"/>
-		
-		
-		<Reference Include="Microsoft.CSharp"/>
- 		
-		<Reference Include="System.Data"/>
-		<Reference Include="System.Xml"/>
-	</ItemGroup>
-	<ItemGroup>
-		<Compile Include="Class1.cs" />
-
-		<Compile Include="Properties\AssemblyInfo.cs" />
-	</ItemGroup>
-	<Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6D37DDB3-0D16-47E8-8E8C-139F8931BCDC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MarketplaceWebServiceOrders</RootNamespace>
+    <AssemblyName>MarketplaceWebServiceOrders</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MWSClientCsRuntime-1.0">
+      <HintPath>..\..\dll\order\MWSOrdersCSharpClientLibrary-2013-09-01._CB480781495_\dist\MWSClientCsRuntime-1.0.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MarketplaceWebServiceOrders.cs" />
+    <Compile Include="MarketplaceWebServiceOrdersClient.cs" />
+    <Compile Include="MarketplaceWebServiceOrdersConfig.cs" />
+    <Compile Include="MarketplaceWebServiceOrdersException.cs" />
+    <Compile Include="MarketplaceWebServiceOrdersSample.cs" />
+    <Compile Include="Mock\MarketplaceWebServiceOrdersMock.cs" />
+    <Compile Include="Model\Address.cs" />
+    <Compile Include="Model\BuyerCustomizedInfoDetail.cs" />
+    <Compile Include="Model\BuyerTaxInfo.cs" />
+    <Compile Include="Model\GetOrderRequest.cs" />
+    <Compile Include="Model\GetOrderResponse.cs" />
+    <Compile Include="Model\GetOrderResult.cs" />
+    <Compile Include="Model\GetServiceStatusRequest.cs" />
+    <Compile Include="Model\GetServiceStatusResponse.cs" />
+    <Compile Include="Model\GetServiceStatusResult.cs" />
+    <Compile Include="Model\IMWSResponse.cs" />
+    <Compile Include="Model\InvoiceData.cs" />
+    <Compile Include="Model\ListOrderItemsByNextTokenRequest.cs" />
+    <Compile Include="Model\ListOrderItemsByNextTokenResponse.cs" />
+    <Compile Include="Model\ListOrderItemsByNextTokenResult.cs" />
+    <Compile Include="Model\ListOrderItemsRequest.cs" />
+    <Compile Include="Model\ListOrderItemsResponse.cs" />
+    <Compile Include="Model\ListOrderItemsResult.cs" />
+    <Compile Include="Model\ListOrdersByNextTokenRequest.cs" />
+    <Compile Include="Model\ListOrdersByNextTokenResponse.cs" />
+    <Compile Include="Model\ListOrdersByNextTokenResult.cs" />
+    <Compile Include="Model\ListOrdersRequest.cs" />
+    <Compile Include="Model\ListOrdersResponse.cs" />
+    <Compile Include="Model\ListOrdersResult.cs" />
+    <Compile Include="Model\Message.cs" />
+    <Compile Include="Model\Money.cs" />
+    <Compile Include="Model\Order.cs" />
+    <Compile Include="Model\OrderItem.cs" />
+    <Compile Include="Model\PaymentExecutionDetailItem.cs" />
+    <Compile Include="Model\PointsGrantedDetail.cs" />
+    <Compile Include="Model\ProductInfoDetail.cs" />
+    <Compile Include="Model\ResponseHeaderMetadata.cs" />
+    <Compile Include="Model\ResponseMetadata.cs" />
+    <Compile Include="Model\TaxClassification.cs" />
+    <Compile Include="Model\TaxCollection.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Mock\MarketplaceWebServiceOrders.Model.GetOrderResponse.xml" />
+    <Content Include="Mock\MarketplaceWebServiceOrders.Model.GetServiceStatusResponse.xml" />
+    <Content Include="Mock\MarketplaceWebServiceOrders.Model.ListOrderItemsByNextTokenResponse.xml" />
+    <Content Include="Mock\MarketplaceWebServiceOrders.Model.ListOrderItemsResponse.xml" />
+    <Content Include="Mock\MarketplaceWebServiceOrders.Model.ListOrdersByNextTokenResponse.xml" />
+    <Content Include="Mock\MarketplaceWebServiceOrders.Model.ListOrdersResponse.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
@@ -55,5 +100,4 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-
- </Project>
+</Project>
