@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MWSClientCsRuntime", "MWSCl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarketplaceWebServiceOrders", "MarketplaceWebServiceOrders\MarketplaceWebServiceOrders.csproj", "{6D37DDB3-0D16-47E8-8E8C-139F8931BCDC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "skyCommon", "skyCommon\skyCommon.csproj", "{A94F8AF4-396D-4684-93AE-748F6ECC0C10}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{6D37DDB3-0D16-47E8-8E8C-139F8931BCDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D37DDB3-0D16-47E8-8E8C-139F8931BCDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D37DDB3-0D16-47E8-8E8C-139F8931BCDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A94F8AF4-396D-4684-93AE-748F6ECC0C10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A94F8AF4-396D-4684-93AE-748F6ECC0C10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A94F8AF4-396D-4684-93AE-748F6ECC0C10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A94F8AF4-396D-4684-93AE-748F6ECC0C10}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -30,9 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MWSClientCsRuntime-1.0">
-      <HintPath>..\..\dll\order\MWSOrdersCSharpClientLibrary-2013-09-01._CB480781495_\dist\MWSClientCsRuntime-1.0.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -91,6 +88,16 @@
     <Content Include="Mock\MarketplaceWebServiceOrders.Model.ListOrderItemsResponse.xml" />
     <Content Include="Mock\MarketplaceWebServiceOrders.Model.ListOrdersByNextTokenResponse.xml" />
     <Content Include="Mock\MarketplaceWebServiceOrders.Model.ListOrdersResponse.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MWSClientCsRuntime\MWSClientCsRuntime.csproj">
+      <Project>{e6fc1ee2-37e7-4eb4-828e-f7c6ba446724}</Project>
+      <Name>MWSClientCsRuntime</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\skyCommon\skyCommon.csproj">
+      <Project>{a94f8af4-396d-4684-93ae-748f6ecc0c10}</Project>
+      <Name>skyCommon</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,0 +1,4 @@
+D:\src\amazonform\skyAmazonClient\skyAmazonClient\MWSClientCsRuntime\bin\Debug\MWSClientCsRuntime.dll
+D:\src\amazonform\skyAmazonClient\skyAmazonClient\MWSClientCsRuntime\bin\Debug\MWSClientCsRuntime.pdb
+D:\src\amazonform\skyAmazonClient\skyAmazonClient\MWSClientCsRuntime\obj\Debug\MWSClientCsRuntime.dll
+D:\src\amazonform\skyAmazonClient\skyAmazonClient\MWSClientCsRuntime\obj\Debug\MWSClientCsRuntime.pdb

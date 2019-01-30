@@ -1,0 +1,4 @@
+D:\src\amazonform\skyAmazonClient\skyAmazonClient\skyCommon\bin\Debug\skyCommon.dll
+D:\src\amazonform\skyAmazonClient\skyAmazonClient\skyCommon\bin\Debug\skyCommon.pdb
+D:\src\amazonform\skyAmazonClient\skyAmazonClient\skyCommon\obj\Debug\skyCommon.dll
+D:\src\amazonform\skyAmazonClient\skyAmazonClient\skyCommon\obj\Debug\skyCommon.pdb

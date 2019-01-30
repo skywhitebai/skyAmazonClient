@@ -1,0 +1,9 @@
+D:\src\amazonform\skyAmazonClient\skyAmazonClient\MarketplaceWebServiceOrders\obj\Debug\MarketplaceWebServiceOrders.csprojResolveAssemblyReference.cache
+D:\src\amazonform\skyAmazonClient\skyAmazonClient\MarketplaceWebServiceOrders\bin\Debug\MarketplaceWebServiceOrders.dll
+D:\src\amazonform\skyAmazonClient\skyAmazonClient\MarketplaceWebServiceOrders\bin\Debug\MarketplaceWebServiceOrders.pdb
+D:\src\amazonform\skyAmazonClient\skyAmazonClient\MarketplaceWebServiceOrders\bin\Debug\MWSClientCsRuntime.dll
+D:\src\amazonform\skyAmazonClient\skyAmazonClient\MarketplaceWebServiceOrders\bin\Debug\MWSClientCsRuntime.pdb
+D:\src\amazonform\skyAmazonClient\skyAmazonClient\MarketplaceWebServiceOrders\obj\Debug\MarketplaceWebServiceOrders.dll
+D:\src\amazonform\skyAmazonClient\skyAmazonClient\MarketplaceWebServiceOrders\obj\Debug\MarketplaceWebServiceOrders.pdb
+D:\src\amazonform\skyAmazonClient\skyAmazonClient\MarketplaceWebServiceOrders\bin\Debug\skyCommon.dll
+D:\src\amazonform\skyAmazonClient\skyAmazonClient\MarketplaceWebServiceOrders\bin\Debug\skyCommon.pdb

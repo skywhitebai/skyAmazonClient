@@ -15,6 +15,7 @@
  */
 
 using MarketplaceWebServiceOrders.Model;
+using skyCommon;
 using System;
 using System.Collections.Generic;
 
@@ -28,26 +29,28 @@ namespace MarketplaceWebServiceOrders {
     /// parameters below with sensible values and run.
     /// </summary>
     public class MarketplaceWebServiceOrdersSample {
+        static string sellerId = "A2MPQIZC358GVX";
 
+        static string mwsAuthToken = "amzn.mws.6eb25106-576e-b4b6-f9d2-ef9a6e342bac";
         public static void Main(string[] args)
         {
             // TODO: Set the below configuration variables before attempting to run
 
-            // Developer AWS access key
-            string accessKey = "replaceWithAccessKey";
+            // Developer AWS access key replaceWithAccessKey
+            string accessKey = "530221270165";
 
-            // Developer AWS secret key
-            string secretKey = "replaceWithSecretKey";
+            // Developer AWS secret key replaceWithSecretKey
+            string secretKey = "AKIAJA5JLNJESHZCDIKA";
 
-            // The client application name
-            string appName = "CSharpSampleCode";
+            // The client application name CSharpSampleCode
+            string appName = "skyddt";
 
             // The client application version
             string appVersion = "1.0";
 
             // The endpoint for region service and version (see developer guide)
-            // ex: https://mws.amazonservices.com
-            string serviceURL = "replaceWithServiceURL";
+            // ex: https://mws.amazonservices.com replaceWithServiceURL
+            string serviceURL = "https://mws.amazonservices.com";
 
             // Create a configuration object
             MarketplaceWebServiceOrdersConfig config = new MarketplaceWebServiceOrdersConfig();
@@ -107,9 +110,9 @@ namespace MarketplaceWebServiceOrders {
         {
             // Create a request.
             GetOrderRequest request = new GetOrderRequest();
-            string sellerId = "example";
+            string sellerId = "A2MPQIZC358GVX";
             request.SellerId = sellerId;
-            string mwsAuthToken = "example";
+            string mwsAuthToken = "amzn.mws.6eb25106-576e-b4b6-f9d2-ef9a6e342bac";
             request.MWSAuthToken = mwsAuthToken;
             List<string> amazonOrderId = new List<string>();
             request.AmazonOrderId = amazonOrderId;
@@ -157,31 +160,30 @@ namespace MarketplaceWebServiceOrders {
         {
             // Create a request.
             ListOrdersRequest request = new ListOrdersRequest();
-            string sellerId = "example";
             request.SellerId = sellerId;
-            string mwsAuthToken = "example";
             request.MWSAuthToken = mwsAuthToken;
-            DateTime createdAfter = new DateTime();
+            DateTime createdAfter =TimeUtils.getDateTime("2018-1-1");
             request.CreatedAfter = createdAfter;
-            DateTime createdBefore = new DateTime();
+            /*DateTime createdBefore = new DateTime();
             request.CreatedBefore = createdBefore;
             DateTime lastUpdatedAfter = new DateTime();
             request.LastUpdatedAfter = lastUpdatedAfter;
             DateTime lastUpdatedBefore = new DateTime();
-            request.LastUpdatedBefore = lastUpdatedBefore;
+            request.LastUpdatedBefore = lastUpdatedBefore;*/
             List<string> orderStatus = new List<string>();
             request.OrderStatus = orderStatus;
             List<string> marketplaceId = new List<string>();
+            marketplaceId.Add("ATVPDKIKX0DER");
             request.MarketplaceId = marketplaceId;
             List<string> fulfillmentChannel = new List<string>();
             request.FulfillmentChannel = fulfillmentChannel;
             List<string> paymentMethod = new List<string>();
             request.PaymentMethod = paymentMethod;
-            string buyerEmail = "example";
+            /*string buyerEmail = "example";
             request.BuyerEmail = buyerEmail;
             string sellerOrderId = "example";
-            request.SellerOrderId = sellerOrderId;
-            decimal maxResultsPerPage = 1;
+            request.SellerOrderId = sellerOrderId;*/
+            decimal maxResultsPerPage = 50;
             request.MaxResultsPerPage = maxResultsPerPage;
             List<string> tfmShipmentStatus = new List<string>();
             request.TFMShipmentStatus = tfmShipmentStatus;

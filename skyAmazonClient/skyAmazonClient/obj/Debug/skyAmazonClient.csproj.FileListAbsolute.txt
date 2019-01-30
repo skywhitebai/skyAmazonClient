@@ -1,1 +1,16 @@
 F:\code\C#\amazon\skyAmazonClient\skyAmazonClient\bin\Debug\skyAmazonClient.exe.config
+D:\src\amazonform\skyAmazonClient\skyAmazonClient\skyAmazonClient\bin\Debug\skyAmazonClient.exe.config
+D:\src\amazonform\skyAmazonClient\skyAmazonClient\skyAmazonClient\bin\Debug\skyAmazonClient.exe
+D:\src\amazonform\skyAmazonClient\skyAmazonClient\skyAmazonClient\bin\Debug\skyAmazonClient.pdb
+D:\src\amazonform\skyAmazonClient\skyAmazonClient\skyAmazonClient\obj\Debug\skyAmazonClient.csprojResolveAssemblyReference.cache
+D:\src\amazonform\skyAmazonClient\skyAmazonClient\skyAmazonClient\obj\Debug\skyAmazonClient.Properties.Resources.resources
+D:\src\amazonform\skyAmazonClient\skyAmazonClient\skyAmazonClient\obj\Debug\skyAmazonClient.csproj.GenerateResource.Cache
+D:\src\amazonform\skyAmazonClient\skyAmazonClient\skyAmazonClient\obj\Debug\skyAmazonClient.exe
+D:\src\amazonform\skyAmazonClient\skyAmazonClient\skyAmazonClient\obj\Debug\skyAmazonClient.pdb
+D:\src\amazonform\skyAmazonClient\skyAmazonClient\skyAmazonClient\bin\Debug\MarketplaceWebServiceOrders.dll
+D:\src\amazonform\skyAmazonClient\skyAmazonClient\skyAmazonClient\bin\Debug\MWSClientCsRuntime.dll
+D:\src\amazonform\skyAmazonClient\skyAmazonClient\skyAmazonClient\bin\Debug\MarketplaceWebServiceOrders.pdb
+D:\src\amazonform\skyAmazonClient\skyAmazonClient\skyAmazonClient\bin\Debug\MWSClientCsRuntime.pdb
+D:\src\amazonform\skyAmazonClient\skyAmazonClient\skyAmazonClient\obj\Debug\skyAmazonClient.Form1.resources
+D:\src\amazonform\skyAmazonClient\skyAmazonClient\skyAmazonClient\bin\Debug\skyCommon.dll
+D:\src\amazonform\skyAmazonClient\skyAmazonClient\skyAmazonClient\bin\Debug\skyCommon.pdb
