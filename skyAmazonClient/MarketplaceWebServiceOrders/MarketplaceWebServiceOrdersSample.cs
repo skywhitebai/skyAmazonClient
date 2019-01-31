@@ -196,11 +196,9 @@ namespace MarketplaceWebServiceOrders {
         {
             // Create a request.
             ListOrdersByNextTokenRequest request = new ListOrdersByNextTokenRequest();
-            string sellerId = "example";
             request.SellerId = sellerId;
-            string mwsAuthToken = "example";
             request.MWSAuthToken = mwsAuthToken;
-            string nextToken = "example";
+            string nextToken = "yJbtGvAxKqWaJqJYLDm0ZIfVkJJPpovR6FsDsnIUhRx0179C/MixOMNI3HOI22PIxqXyQLkGMBs8VhF73Xgy+zSnd15FyZfFw+Ie0bWiGqqISmxHBLw2DxL+iRQo05GQInTAy+XKVmRZBY+oaVuyc4D8eV8v09jgnc0fakXl2jqIg6p1kh+TfmwslhPndHo3f2GLmUGyr9UGnxD0RJmrrxhFP8KzGB62m5xaobyXfHTK9kUavBVIe6I4GnWh00CCRxHAuPz7ThbnYifjaQMwbdo/agXrXxQ7qvbPZF4sBh3q0sjrJVSK8Z0FUIyM6yC5boHX0iN4j9ZHYyxU0aduRctz+o/xrtAnrRGWhZAyx3A99JOpf0t2rujHfMVaM8PkCOPiJIQwYegcZqYSBKW+xwTqhDX3f7edbQeerBANGslIYyLVEcgCJJleM4+3p8lEJwljc7s2VBqsij1FjOr6mcYZXA7i7fYdONL/ezWtgY6YIKboBhBvhy7KF2BLIECM";
             request.NextToken = nextToken;
             return this.client.ListOrdersByNextToken(request);
         }

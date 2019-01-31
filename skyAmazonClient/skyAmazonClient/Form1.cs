@@ -1,5 +1,6 @@
 ﻿using MarketplaceWebServiceOrders;
 using MarketplaceWebServiceOrders.Model;
+using skyCommon;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -62,15 +63,17 @@ namespace skyAmazonClient
                 // response = sample.InvokeGetServiceStatus();
                 // response = sample.InvokeListOrderItems();
                 // response = sample.InvokeListOrderItemsByNextToken();
-                 response = sample.InvokeListOrders();
-                // response = sample.InvokeListOrdersByNextToken();
+                response = sample.InvokeListOrders();
+                //response = sample.InvokeListOrdersByNextToken();
                 Console.WriteLine("Response:");
                 ResponseHeaderMetadata rhmd = response.ResponseHeaderMetadata;
                 // We recommend logging the request id and timestamp of every call.
                 Console.WriteLine("RequestId: " + rhmd.RequestId);
                 Console.WriteLine("Timestamp: " + rhmd.Timestamp);
                 string responseXml = response.ToXML();
+                string responseJson = JsonJavaScriptSerializer.ToJSON(response);
                 Console.WriteLine(responseXml);
+                Console.WriteLine(responseJson);
             }
             catch (MarketplaceWebServiceOrdersException ex)
             {
