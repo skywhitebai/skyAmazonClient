@@ -3,3 +3,4 @@ D:\src\amazonform\skyAmazonClient\skyAmazonClient\skyCommon\bin\Debug\skyCommon.
 D:\src\amazonform\skyAmazonClient\skyAmazonClient\skyCommon\obj\Debug\skyCommon.dll
 D:\src\amazonform\skyAmazonClient\skyAmazonClient\skyCommon\obj\Debug\skyCommon.pdb
 D:\src\amazonform\skyAmazonClient\skyAmazonClient\skyCommon\obj\Debug\skyCommon.csprojResolveAssemblyReference.cache
+D:\src\amazonform\skyAmazonClient\skyAmazonClient\skyCommon\bin\Debug\Newtonsoft.Json.dll

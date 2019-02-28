@@ -14,3 +14,4 @@ D:\src\amazonform\skyAmazonClient\skyAmazonClient\skyAmazonClient\bin\Debug\MWSC
 D:\src\amazonform\skyAmazonClient\skyAmazonClient\skyAmazonClient\obj\Debug\skyAmazonClient.Form1.resources
 D:\src\amazonform\skyAmazonClient\skyAmazonClient\skyAmazonClient\bin\Debug\skyCommon.dll
 D:\src\amazonform\skyAmazonClient\skyAmazonClient\skyAmazonClient\bin\Debug\skyCommon.pdb
+D:\src\amazonform\skyAmazonClient\skyAmazonClient\skyAmazonClient\bin\Debug\Newtonsoft.Json.dll

@@ -7,3 +7,4 @@ D:\src\amazonform\skyAmazonClient\skyAmazonClient\MarketplaceWebServiceOrders\ob
 D:\src\amazonform\skyAmazonClient\skyAmazonClient\MarketplaceWebServiceOrders\obj\Debug\MarketplaceWebServiceOrders.pdb
 D:\src\amazonform\skyAmazonClient\skyAmazonClient\MarketplaceWebServiceOrders\bin\Debug\skyCommon.dll
 D:\src\amazonform\skyAmazonClient\skyAmazonClient\MarketplaceWebServiceOrders\bin\Debug\skyCommon.pdb
+D:\src\amazonform\skyAmazonClient\skyAmazonClient\MarketplaceWebServiceOrders\bin\Debug\Newtonsoft.Json.dll
