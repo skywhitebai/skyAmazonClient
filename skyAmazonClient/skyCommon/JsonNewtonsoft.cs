@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,12 @@ namespace skyCommon
             {
                 return null;
             }
-            return JsonConvert.SerializeObject(o);
+            var serializerSettings = new JsonSerializerSettings
+            {
+                // 设置为驼峰命名
+                ContractResolver = new CamelCasePropertyNamesContractResolver()
+            };
+            return JsonConvert.SerializeObject(o, Formatting.None, serializerSettings);
         }
         /// <summary>
         /// 把Json文本转为实体

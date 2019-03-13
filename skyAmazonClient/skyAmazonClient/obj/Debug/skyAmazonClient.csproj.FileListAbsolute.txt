@@ -15,3 +15,6 @@ D:\src\amazonform\skyAmazonClient\skyAmazonClient\skyAmazonClient\obj\Debug\skyA
 D:\src\amazonform\skyAmazonClient\skyAmazonClient\skyAmazonClient\bin\Debug\skyCommon.dll
 D:\src\amazonform\skyAmazonClient\skyAmazonClient\skyAmazonClient\bin\Debug\skyCommon.pdb
 D:\src\amazonform\skyAmazonClient\skyAmazonClient\skyAmazonClient\bin\Debug\Newtonsoft.Json.dll
+F:\code\GitHub\skyAmazonClient\skyAmazonClient\skyAmazonClient\bin\Debug\skyAmazonClient.exe.config
+F:\code\GitHub\skyAmazonClient\skyAmazonClient\skyAmazonClient\obj\Debug\skyAmazonClient.exe
+F:\code\GitHub\skyAmazonClient\skyAmazonClient\skyAmazonClient\obj\Debug\skyAmazonClient.pdb
