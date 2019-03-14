@@ -71,11 +71,12 @@ namespace skyAmazonClient
                 Console.WriteLine("RequestId: " + rhmd.RequestId);
                 Console.WriteLine("Timestamp: " + rhmd.Timestamp);
                 string responseXml = response.ToXML();
-                string responseJson = JsonJavaScriptSerializer.ToJSON(response);
+                //string responseJson = JsonJavaScriptSerializer.ToJSON(response);
                 string responseJson2 = JsonNewtonsoft.ToJSON(response);
-                Console.WriteLine(responseXml);
-                Console.WriteLine(responseJson);
+                //Console.WriteLine(responseXml);
+                //Console.WriteLine(responseJson);
                 Console.WriteLine(responseJson2);
+                //Console.WriteLine(response.ToJSON());                
             }
             catch (MarketplaceWebServiceOrdersException ex)
             {

@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
@@ -24,9 +25,18 @@ namespace skyCommon
             var serializerSettings = new JsonSerializerSettings
             {
                 // 设置为驼峰命名
-                ContractResolver = new CamelCasePropertyNamesContractResolver()
+                ContractResolver = new CamelCasePropertyNamesContractResolver(),
+                NullValueHandling = NullValueHandling.Ignore
             };
-            return JsonConvert.SerializeObject(o, Formatting.None, serializerSettings);
+            IsoDateTimeConverter iso = new IsoDateTimeConverter();
+            iso.DateTimeFormat = "yyyy-MM-dd HH:mm:ss.SSS";
+  
+            serializerSettings.Converters.Add(iso);
+            String json=JsonConvert.SerializeObject(o, serializerSettings);
+            if(json.Contains("\"0001-01-01 00:00:00.000\"")){
+                json = json.Replace("\"0001-01-01 00:00:00.000\"", "null");
+            }
+            return json;
         }
         /// <summary>
         /// 把Json文本转为实体
