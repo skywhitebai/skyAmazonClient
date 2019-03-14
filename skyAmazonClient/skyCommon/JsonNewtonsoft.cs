@@ -29,8 +29,7 @@ namespace skyCommon
                 NullValueHandling = NullValueHandling.Ignore
             };
             IsoDateTimeConverter iso = new IsoDateTimeConverter();
-            iso.DateTimeFormat = "yyyy-MM-dd HH:mm:ss.SSS";
-  
+            iso.DateTimeFormat = "yyyy-MM-dd HH:mm:ss.fff";
             serializerSettings.Converters.Add(iso);
             String json=JsonConvert.SerializeObject(o, serializerSettings);
             if(json.Contains("\"0001-01-01 00:00:00.000\"")){
