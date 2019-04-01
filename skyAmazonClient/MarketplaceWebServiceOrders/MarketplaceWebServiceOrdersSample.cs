@@ -134,11 +134,9 @@ namespace MarketplaceWebServiceOrders {
         {
             // Create a request.
             ListOrderItemsRequest request = new ListOrderItemsRequest();
-            string sellerId = "example";
             request.SellerId = sellerId;
-            string mwsAuthToken = "example";
             request.MWSAuthToken = mwsAuthToken;
-            string amazonOrderId = "example";
+            string amazonOrderId = "111-4176424-4051440";
             request.AmazonOrderId = amazonOrderId;
             return this.client.ListOrderItems(request);
         }
