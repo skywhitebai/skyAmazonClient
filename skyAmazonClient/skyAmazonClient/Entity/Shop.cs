@@ -8,9 +8,9 @@ namespace skyAmazonClient.Entity
 {
     class Shop
     {
-        private Int16? id;
+        private Int32 id;
 
-        public Int16? Id
+        public Int32 Id
         {
             get { return id; }
             set { id = value; }
