@@ -29,5 +29,14 @@ namespace skyAmazonClient.Service
             BaseResponse<Shop> baseResponse = JsonNewtonsoft.FromJSON<BaseResponse<Shop>>(resJson);
             return baseResponse;
         }
+
+        internal static void updateLastUpdatedAfter(int shopId,DateTime dateTime)
+        {
+            IDictionary<string, string> textParams = new Dictionary<string, string>();
+            textParams.Add("shopId", shopId.ToString());
+            textParams.Add("lastUpdatedAfter", dateTime.ToString("yyyy-MM-dd hh:mm:ss.fff"));
+            string resJson = new HttpUtils().DoPost(AppConstant.updateOrderLastUpdatedAfterUrl, textParams);
+            BaseResponse<Object> baseResponse = JsonNewtonsoft.FromJSON<BaseResponse<Object>>(resJson);
+        }
     }
 }

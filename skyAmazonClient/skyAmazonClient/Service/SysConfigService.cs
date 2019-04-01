@@ -17,10 +17,10 @@ namespace skyAmazonClient.Service
             textParams.Add("keyName", key);
             textParams.Add("loginToken", AppConstant.loginToken);
             String resJson = new HttpUtils().DoPost(AppConstant.getConfigByKeyUrl, textParams);
-            BaseResponse<String> baseResponse = JsonNewtonsoft.FromJSON<BaseResponse<String>>(resJson);
+            BaseResponse<SysConfig> baseResponse = JsonNewtonsoft.FromJSON<BaseResponse<SysConfig>>(resJson);
             if (baseResponse.isSuccessd())
             {
-               return baseResponse.Data;
+               return baseResponse.Data.KeyValue;
             }
             return null;
         }

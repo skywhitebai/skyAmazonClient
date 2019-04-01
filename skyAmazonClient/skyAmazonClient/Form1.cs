@@ -129,8 +129,8 @@ namespace skyAmazonClient
                 MessageBox.Show(getCurrentUserShopResponse.Message);
                 return;
             }
-            AppConstant.sellerId = getCurrentUserShopResponse.Data.SellerId;
-            AppConstant.mwsAuthToken = getCurrentUserShopResponse.Data.MwsAuthToken;
+            //AppConstant.sellerId = getCurrentUserShopResponse.Data.SellerId;
+            //AppConstant.mwsAuthToken = getCurrentUserShopResponse.Data.MwsAuthToken;
             if(String.IsNullOrEmpty(getCurrentUserShopResponse.Data.SellerId)
                 ||String.IsNullOrEmpty(getCurrentUserShopResponse.Data.MwsAuthToken)
                 )

@@ -37,6 +37,7 @@ namespace skyAmazonClient.Service
             {
                 dealOrder(shopId, order);
             }
+            ShopService.updateLastUpdatedAfter(shopId,listOrdersResponse.ListOrdersResult.LastUpdatedBefore);
             if (String.IsNullOrEmpty(listOrdersResponse.ListOrdersResult.NextToken))
             {
                 return ;
@@ -48,6 +49,7 @@ namespace skyAmazonClient.Service
                 {
                     dealOrder(shopId, order);
                 }
+                ShopService.updateLastUpdatedAfter(shopId,listOrdersResponse.ListOrdersResult.LastUpdatedBefore);
                 if (String.IsNullOrEmpty(listOrdersByNextTokenResponse.ListOrdersByNextTokenResult.NextToken))
                 {
                     return ;
@@ -59,10 +61,9 @@ namespace skyAmazonClient.Service
         {
             Console.WriteLine("dealOrder AmazonOrderId: " + order.AmazonOrderId);
             List<OrderItem> orderItems = getOrderItems(order.AmazonOrderId);
-            String orderItemsJson = JsonNewtonsoft.ToJSON(order);
+            String orderItemsJson = JsonNewtonsoft.ToJSON(orderItems);
             String orderJson = JsonNewtonsoft.ToJSON(order);
-            saveOrder(shopId, orderJson, orderItemsJson); 
-
+            saveOrder(shopId, orderJson, orderItemsJson);
         }
         private void saveOrder(int shopId, string orderJson, string orderItemsJson)
         {
@@ -71,7 +72,7 @@ namespace skyAmazonClient.Service
             textParams.Add("orderJson", orderJson);
             textParams.Add("orderItemsJson", orderItemsJson);
             textParams.Add("loginToken", AppConstant.loginToken);
-            String resJson = new HttpUtils().DoPost(AppConstant.clientLoginUrl, textParams);
+            String resJson = new HttpUtils().DoPost(AppConstant.saveOrderUrl, textParams);
             BaseResponse<Object> baseResponse = JsonNewtonsoft.FromJSON<BaseResponse<Object>>(resJson);
         }
         private List<OrderItem> getOrderItems(String amazonOrderId)

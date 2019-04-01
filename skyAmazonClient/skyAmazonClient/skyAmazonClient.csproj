@@ -48,6 +48,7 @@
     <Compile Include="Entity\BaseResponse.cs" />
     <Compile Include="Entity\CurrentUserInfo.cs" />
     <Compile Include="Entity\Shop.cs" />
+    <Compile Include="Entity\SysConfig.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

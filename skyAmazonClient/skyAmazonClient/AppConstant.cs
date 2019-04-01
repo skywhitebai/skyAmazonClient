@@ -20,9 +20,12 @@ namespace skyAmazonClient
         public static string amazonSecretKey = SysConfigService.getConfigByKey("amazonSecretKey");
         public static string sellerId;
         public static string mwsAuthToken;
+        public static string saveOrderUrl=ddtUrl + "/order/saveOrder";
+        public static string updateOrderLastUpdatedAfterUrl = ddtUrl + "/shop/updateOrderLastUpdatedAfter";
         static AppConstant()
         {
-            clientLoginUrl = ddtUrl + "/account/clientLogin";
+            //clientLoginUrl = ddtUrl + "/account/clientLogin";
         }
+
     }
 }
