@@ -9,6 +9,7 @@ namespace skyAmazonClient.Entity
     class BaseResponse<T>
     {
         static string SUCCESS_CODE = "200";
+        static string FAIL_CODE = "99";
         string code;
         public string Code
         {
@@ -35,6 +36,24 @@ namespace skyAmazonClient.Entity
         {
             get { return data; }
             set { data = value; }
+        }
+        public Boolean isSuccessd()
+        {
+            if (SUCCESS_CODE.Equals(this.code))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public static BaseResponse<T> failMessage(String message)
+        {
+            BaseResponse<T> baseResponse = new BaseResponse<T>();
+            baseResponse.Code = FAIL_CODE;
+            baseResponse.Message = message;
+            return baseResponse;
         }
 
     }
