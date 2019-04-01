@@ -8,3 +8,13 @@ D:\src\amazonform\skyAmazonClient\skyAmazonClient\MarketplaceWebServiceOrders\ob
 D:\src\amazonform\skyAmazonClient\skyAmazonClient\MarketplaceWebServiceOrders\bin\Debug\skyCommon.dll
 D:\src\amazonform\skyAmazonClient\skyAmazonClient\MarketplaceWebServiceOrders\bin\Debug\skyCommon.pdb
 D:\src\amazonform\skyAmazonClient\skyAmazonClient\MarketplaceWebServiceOrders\bin\Debug\Newtonsoft.Json.dll
+F:\code\github\skyAmazonClient\skyAmazonClient\MarketplaceWebServiceOrders\bin\Debug\MarketplaceWebServiceOrders.dll
+F:\code\github\skyAmazonClient\skyAmazonClient\MarketplaceWebServiceOrders\bin\Debug\MarketplaceWebServiceOrders.pdb
+F:\code\github\skyAmazonClient\skyAmazonClient\MarketplaceWebServiceOrders\bin\Debug\MWSClientCsRuntime.dll
+F:\code\github\skyAmazonClient\skyAmazonClient\MarketplaceWebServiceOrders\bin\Debug\skyCommon.dll
+F:\code\github\skyAmazonClient\skyAmazonClient\MarketplaceWebServiceOrders\bin\Debug\Newtonsoft.Json.dll
+F:\code\github\skyAmazonClient\skyAmazonClient\MarketplaceWebServiceOrders\bin\Debug\MWSClientCsRuntime.pdb
+F:\code\github\skyAmazonClient\skyAmazonClient\MarketplaceWebServiceOrders\bin\Debug\skyCommon.pdb
+F:\code\github\skyAmazonClient\skyAmazonClient\MarketplaceWebServiceOrders\obj\Debug\MarketplaceWebServiceOrders.csprojResolveAssemblyReference.cache
+F:\code\github\skyAmazonClient\skyAmazonClient\MarketplaceWebServiceOrders\obj\Debug\MarketplaceWebServiceOrders.dll
+F:\code\github\skyAmazonClient\skyAmazonClient\MarketplaceWebServiceOrders\obj\Debug\MarketplaceWebServiceOrders.pdb

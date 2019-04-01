@@ -116,7 +116,7 @@ namespace skyAmazonClient
             //登录获取loginToken
             String macAddress = GetSystemInfo.getMacAddr_Local();
 
-            BaseResponse baseResponse = AccountService.login(userName, password);
+            BaseResponse<CurrentUserInfo> baseResponse = AccountService.login(userName, password);
 
         }
     }

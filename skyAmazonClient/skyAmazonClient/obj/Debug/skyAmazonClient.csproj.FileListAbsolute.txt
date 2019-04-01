@@ -18,3 +18,16 @@ D:\src\amazonform\skyAmazonClient\skyAmazonClient\skyAmazonClient\bin\Debug\Newt
 F:\code\GitHub\skyAmazonClient\skyAmazonClient\skyAmazonClient\bin\Debug\skyAmazonClient.exe.config
 F:\code\GitHub\skyAmazonClient\skyAmazonClient\skyAmazonClient\obj\Debug\skyAmazonClient.exe
 F:\code\GitHub\skyAmazonClient\skyAmazonClient\skyAmazonClient\obj\Debug\skyAmazonClient.pdb
+F:\code\github\skyAmazonClient\skyAmazonClient\skyAmazonClient\bin\Debug\skyAmazonClient.exe
+F:\code\github\skyAmazonClient\skyAmazonClient\skyAmazonClient\bin\Debug\skyAmazonClient.pdb
+F:\code\github\skyAmazonClient\skyAmazonClient\skyAmazonClient\bin\Debug\MarketplaceWebServiceOrders.dll
+F:\code\github\skyAmazonClient\skyAmazonClient\skyAmazonClient\bin\Debug\MWSClientCsRuntime.dll
+F:\code\github\skyAmazonClient\skyAmazonClient\skyAmazonClient\bin\Debug\skyCommon.dll
+F:\code\github\skyAmazonClient\skyAmazonClient\skyAmazonClient\bin\Debug\Newtonsoft.Json.dll
+F:\code\github\skyAmazonClient\skyAmazonClient\skyAmazonClient\bin\Debug\MarketplaceWebServiceOrders.pdb
+F:\code\github\skyAmazonClient\skyAmazonClient\skyAmazonClient\bin\Debug\MWSClientCsRuntime.pdb
+F:\code\github\skyAmazonClient\skyAmazonClient\skyAmazonClient\bin\Debug\skyCommon.pdb
+F:\code\github\skyAmazonClient\skyAmazonClient\skyAmazonClient\obj\Debug\skyAmazonClient.csprojResolveAssemblyReference.cache
+F:\code\github\skyAmazonClient\skyAmazonClient\skyAmazonClient\obj\Debug\skyAmazonClient.Form1.resources
+F:\code\github\skyAmazonClient\skyAmazonClient\skyAmazonClient\obj\Debug\skyAmazonClient.Properties.Resources.resources
+F:\code\github\skyAmazonClient\skyAmazonClient\skyAmazonClient\obj\Debug\skyAmazonClient.csproj.GenerateResource.Cache

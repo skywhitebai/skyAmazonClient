@@ -2,3 +2,8 @@ D:\src\amazonform\skyAmazonClient\skyAmazonClient\MWSClientCsRuntime\bin\Debug\M
 D:\src\amazonform\skyAmazonClient\skyAmazonClient\MWSClientCsRuntime\bin\Debug\MWSClientCsRuntime.pdb
 D:\src\amazonform\skyAmazonClient\skyAmazonClient\MWSClientCsRuntime\obj\Debug\MWSClientCsRuntime.dll
 D:\src\amazonform\skyAmazonClient\skyAmazonClient\MWSClientCsRuntime\obj\Debug\MWSClientCsRuntime.pdb
+F:\code\github\skyAmazonClient\skyAmazonClient\MWSClientCsRuntime\bin\Debug\MWSClientCsRuntime.dll
+F:\code\github\skyAmazonClient\skyAmazonClient\MWSClientCsRuntime\bin\Debug\MWSClientCsRuntime.pdb
+F:\code\github\skyAmazonClient\skyAmazonClient\MWSClientCsRuntime\obj\Debug\MWSClientCsRuntime.csprojResolveAssemblyReference.cache
+F:\code\github\skyAmazonClient\skyAmazonClient\MWSClientCsRuntime\obj\Debug\MWSClientCsRuntime.dll
+F:\code\github\skyAmazonClient\skyAmazonClient\MWSClientCsRuntime\obj\Debug\MWSClientCsRuntime.pdb

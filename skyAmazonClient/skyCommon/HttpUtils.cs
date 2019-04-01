@@ -78,7 +78,6 @@ namespace skyCommon
         {
             HttpWebRequest req = GetWebRequest(url, "POST", headerParams);
             req.ContentType = "application/x-www-form-urlencoded;charset=utf-8";
- 
             byte[] postData = Encoding.UTF8.GetBytes(BuildQuery(textParams));
             System.IO.Stream reqStream = req.GetRequestStream();
             reqStream.Write(postData, 0, postData.Length);
@@ -263,7 +262,7 @@ namespace skyCommon
             req.Method = method;
             req.KeepAlive = true;
             req.UserAgent = "top-sdk-net";
-            req.Accept = "text/xml,text/javascript";
+            req.Accept = "text/xml,text/javascript,application/json,*/*";
             req.Timeout = this._timeout;
             req.ReadWriteTimeout = this._readWriteTimeout;
  
@@ -385,7 +384,7 @@ namespace skyCommon
  
                     query.Append(name);
                     query.Append("=");
-                   // query.Append(HttpUtility.UrlEncode(value, Encoding.UTF8));
+                    query.Append(value);
                     hasParam = true;
                 }
             }
