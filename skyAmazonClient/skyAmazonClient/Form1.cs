@@ -115,9 +115,20 @@ namespace skyAmazonClient
             }
             //登录获取loginToken
             String macAddress = GetSystemInfo.getMacAddr_Local();
-
-            BaseResponse<CurrentUserInfo> baseResponse = AccountService.login(userName, password);
-
+            BaseResponse<CurrentUserInfo> loginResponse = AccountService.login(userName, password);
+            if (!loginResponse.isSuccessd())
+            {
+                MessageBox.Show(loginResponse.Message);
+                return;
+            }
+            AppConstant.loginToken = loginResponse.Data.LoginToken;
+            BaseResponse<Shop> getCurrentUserShopResponse = ShopService.getCurrentUserShop();
+            if (!getCurrentUserShopResponse.isSuccessd())
+            {
+                MessageBox.Show(getCurrentUserShopResponse.Message);
+                return;
+            }
+            MessageBox.Show("登录成功");
         }
     }
 }
