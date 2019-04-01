@@ -1,5 +1,7 @@
 ﻿using MarketplaceWebServiceOrders;
 using MarketplaceWebServiceOrders.Model;
+using skyAmazonClient.Entity;
+using skyAmazonClient.Service;
 using skyCommon;
 using System;
 using System.Collections.Generic;
@@ -26,6 +28,7 @@ namespace skyAmazonClient
         }
 
         void test(){
+            
              // TODO: Set the below configuration variables before attempting to run
 
             // Developer AWS access key replaceWithAccessKey
@@ -61,9 +64,9 @@ namespace skyAmazonClient
                 IMWSResponse response = null;
                 //response = sample.InvokeGetOrder();
                 // response = sample.InvokeGetServiceStatus();
-                response = sample.InvokeListOrderItems();
+                 response = sample.InvokeListOrderItems();
                 // response = sample.InvokeListOrderItemsByNextToken();
-                response = sample.InvokeListOrders();
+                //response = sample.InvokeListOrders();
                 //response = sample.InvokeListOrdersByNextToken();
                 Console.WriteLine("Response:");
                 ResponseHeaderMetadata rhmd = response.ResponseHeaderMetadata;
@@ -71,11 +74,12 @@ namespace skyAmazonClient
                 Console.WriteLine("RequestId: " + rhmd.RequestId);
                 Console.WriteLine("Timestamp: " + rhmd.Timestamp);
                 string responseXml = response.ToXML();
-                string responseJson = JsonJavaScriptSerializer.ToJSON(response);
+                //string responseJson = JsonJavaScriptSerializer.ToJSON(response);
                 string responseJson2 = JsonNewtonsoft.ToJSON(response);
-                Console.WriteLine(responseXml);
-                Console.WriteLine(responseJson);
+                //Console.WriteLine(responseXml);
+                //Console.WriteLine(responseJson);
                 Console.WriteLine(responseJson2);
+                //Console.WriteLine(response.ToJSON());                
             }
             catch (MarketplaceWebServiceOrdersException ex)
             {
@@ -93,6 +97,27 @@ namespace skyAmazonClient
                 Console.WriteLine("ErrorType: " + ex.ErrorType);
                 throw ex;
             }
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            String userName = txtUserName.Text;
+            String password = txtPassword.Text;
+            if (String.IsNullOrEmpty(userName))
+            {
+                MessageBox.Show("用户名不能为空");
+                return;
+            }
+            if (String.IsNullOrEmpty(password))
+            {
+                MessageBox.Show("密码不能为空");
+                return;
+            }
+            //登录获取loginToken
+            String macAddress = GetSystemInfo.getMacAddr_Local();
+
+            BaseResponse baseResponse = AccountService.login(userName, password);
+
         }
     }
 }
