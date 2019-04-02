@@ -79,7 +79,13 @@ namespace skyAmazonClient.Entity
             get { return status; }
             set { status = value; }
         }
+        private string shopMarketplaceId;
 
+        public string ShopMarketplaceId
+        {
+            get { return shopMarketplaceId; }
+            set { shopMarketplaceId = value; }
+        }
 
     }
 }

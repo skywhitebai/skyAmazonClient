@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace skyAmazonClient.Service
@@ -17,45 +18,104 @@ namespace skyAmazonClient.Service
         string appName = "skyddt";
         string appVersion = "1.0";
         string serviceURL = "https://mws.amazonservices.com";
-        string sellerId = "A2MPQIZC358GVX";
-        string mwsAuthToken = "amzn.mws.6eb25106-576e-b4b6-f9d2-ef9a6e342bac";
+        string sellerId ;
+        string mwsAuthToken ;
+        Int32 shopId;
         DateTime lastUpdatedAfter;
-        string shopMarketplaceId="ATVPDKIKX0DER";
+        string shopMarketplaceId;
         MarketplaceWebServiceOrders.MarketplaceWebServiceOrders client;
-        public void synOrder(int shopId,string sellerId, string mwsAuthToken,DateTime? lastUpdatedAfter)
+        public void synOrder(Shop shop)
         {
-            this.sellerId = sellerId;
-            this.mwsAuthToken = mwsAuthToken;
-            this.lastUpdatedAfter = lastUpdatedAfter.Value;
-
+            if (shop.OrderLastUpDatedAfter == null)
+            {
+                shop.OrderLastUpDatedAfter = AppConstant.lastUpdatedAfter;
+            }
+            if (lastUpdatedAfter == null)
+            {
+                this.lastUpdatedAfter = shop.OrderLastUpDatedAfter.Value;
+            }
+            this.sellerId = shop.SellerId;
+            this.mwsAuthToken = shop.MwsAuthToken;
+            shopId = shop.Id;
+            shopMarketplaceId = shop.ShopMarketplaceId;
             MarketplaceWebServiceOrdersConfig config = new MarketplaceWebServiceOrdersConfig();
             config.ServiceURL = serviceURL;
             client = new MarketplaceWebServiceOrdersClient(accessKey, secretKey, appName, appVersion, config);
 
-            ListOrdersResponse listOrdersResponse = InvokeListOrders();
+            ListOrdersResponse listOrdersResponse = getListOrders();
+            if (listOrdersResponse == null)
+            {
+                return;
+            }
             foreach (Order order in listOrdersResponse.ListOrdersResult.Orders)
             {
                 dealOrder(shopId, order);
             }
-            ShopService.updateLastUpdatedAfter(shopId,listOrdersResponse.ListOrdersResult.LastUpdatedBefore);
             if (String.IsNullOrEmpty(listOrdersResponse.ListOrdersResult.NextToken))
             {
                 return ;
             }
-            ListOrdersByNextTokenResponse listOrdersByNextTokenResponse = InvokeListOrdersByNextToken(listOrdersResponse.ListOrdersResult.NextToken);
+            ListOrdersByNextTokenResponse listOrdersByNextTokenResponse = getListOrdersByNextToken(listOrdersResponse.ListOrdersResult.NextToken);
+            if (listOrdersByNextTokenResponse == null)
+            {
+                return;
+            }
             while (true)
             {
                 foreach (Order order in listOrdersByNextTokenResponse.ListOrdersByNextTokenResult.Orders)
                 {
                     dealOrder(shopId, order);
                 }
-                ShopService.updateLastUpdatedAfter(shopId,listOrdersResponse.ListOrdersResult.LastUpdatedBefore);
                 if (String.IsNullOrEmpty(listOrdersByNextTokenResponse.ListOrdersByNextTokenResult.NextToken))
                 {
-                    return ;
+                    return;
                 }
-                listOrdersByNextTokenResponse = InvokeListOrdersByNextToken(listOrdersByNextTokenResponse.ListOrdersByNextTokenResult.NextToken);
+                listOrdersByNextTokenResponse = getListOrdersByNextToken(listOrdersByNextTokenResponse.ListOrdersByNextTokenResult.NextToken);
+                if (listOrdersByNextTokenResponse == null)
+                {
+                    return;
+                }
             } 
+        }
+
+        private ListOrdersByNextTokenResponse getListOrdersByNextToken(string nextToken)
+        {
+            try
+            {
+                return InvokeListOrdersByNextToken(nextToken);;
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message == "Request is throttled")
+                {
+                    Thread.Sleep(TimeSpan.FromMinutes(AppConstant.orderSleepTimeMinute));
+                    return getListOrdersByNextToken(nextToken);
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+
+        private ListOrdersResponse getListOrders()
+        {
+            try
+            {
+                return InvokeListOrders();
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message == "Request is throttled")
+                {
+                    Thread.Sleep(TimeSpan.FromMinutes(AppConstant.orderSleepTimeMinute));
+                    return getListOrders();
+                }
+                else
+                {
+                    return null;
+                }
+            }
         }
         private void dealOrder(int shopId,Order order)
         {
@@ -64,6 +124,8 @@ namespace skyAmazonClient.Service
             String orderItemsJson = JsonNewtonsoft.ToJSON(orderItems);
             String orderJson = JsonNewtonsoft.ToJSON(order);
             saveOrder(shopId, orderJson, orderItemsJson);
+            ShopService.updateLastUpdatedAfter(shopId, order.LastUpdateDate);
+            lastUpdatedAfter = order.LastUpdateDate;
         }
         private void saveOrder(int shopId, string orderJson, string orderItemsJson)
         {
@@ -77,7 +139,11 @@ namespace skyAmazonClient.Service
         }
         private List<OrderItem> getOrderItems(String amazonOrderId)
         {
-            ListOrderItemsResponse listOrderItemsResponse = InvokeListOrderItems(amazonOrderId);
+            ListOrderItemsResponse listOrderItemsResponse = getListOrderItems(amazonOrderId);
+            if (listOrderItemsResponse == null)
+            {
+                return null;
+            }
             List<OrderItem> orderItems = new List<OrderItem>();
             foreach (OrderItem orderItem in listOrderItemsResponse.ListOrderItemsResult.OrderItems)
             {
@@ -87,7 +153,11 @@ namespace skyAmazonClient.Service
             {
                 return orderItems;
             }
-            ListOrderItemsByNextTokenResponse listOrderItemsByNextTokenResponse=InvokeListOrderItemsByNextToken(listOrderItemsResponse.ListOrderItemsResult.NextToken);
+            ListOrderItemsByNextTokenResponse listOrderItemsByNextTokenResponse = getListOrderItemsByNextToken(listOrderItemsResponse.ListOrderItemsResult.NextToken);
+            if (listOrderItemsByNextTokenResponse == null)
+            {
+                return null;
+            }
             while (true)
             {
                 foreach (OrderItem orderItem in listOrderItemsByNextTokenResponse.ListOrderItemsByNextTokenResult.OrderItems)
@@ -98,7 +168,51 @@ namespace skyAmazonClient.Service
                 {
                     return orderItems;
                 }
-                listOrderItemsByNextTokenResponse = InvokeListOrderItemsByNextToken(listOrderItemsByNextTokenResponse.ListOrderItemsByNextTokenResult.NextToken);
+                listOrderItemsByNextTokenResponse = getListOrderItemsByNextToken(listOrderItemsByNextTokenResponse.ListOrderItemsByNextTokenResult.NextToken);
+                if (listOrderItemsByNextTokenResponse == null)
+                {
+                    return null;
+                } 
+            }
+        }
+
+        private ListOrderItemsByNextTokenResponse getListOrderItemsByNextToken(string nextToken)
+        {
+            try
+            {
+                return InvokeListOrderItemsByNextToken(nextToken);
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message == "Request is throttled")
+                {
+                    Thread.Sleep(TimeSpan.FromMinutes(AppConstant.orderItemSleepTimeSecond));
+                    return getListOrderItemsByNextToken(nextToken);
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+
+        private ListOrderItemsResponse getListOrderItems(string amazonOrderId)
+        {
+            try
+            {
+                return InvokeListOrderItems(amazonOrderId);
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message == "Request is throttled")
+                {
+                    Thread.Sleep(TimeSpan.FromMinutes(AppConstant.orderItemSleepTimeSecond));
+                    return getListOrderItems(amazonOrderId);
+                }
+                else
+                {
+                    return null;
+                }
             }
         }
         private GetOrderResponse InvokeGetOrder()

@@ -27,5 +27,9 @@ namespace skyAmazonClient
             //clientLoginUrl = ddtUrl + "/account/clientLogin";
         }
 
+
+        public static long sleepTime = 60 * 1000;
+        public static double orderSleepTimeMinute = 3;
+        public static double orderItemSleepTimeSecond = 30;
     }
 }

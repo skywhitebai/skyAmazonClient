@@ -133,19 +133,14 @@ namespace skyAmazonClient
             //AppConstant.mwsAuthToken = getCurrentUserShopResponse.Data.MwsAuthToken;
             if(String.IsNullOrEmpty(getCurrentUserShopResponse.Data.SellerId)
                 ||String.IsNullOrEmpty(getCurrentUserShopResponse.Data.MwsAuthToken)
+                || String.IsNullOrEmpty(getCurrentUserShopResponse.Data.ShopMarketplaceId)
                 )
             {
                 MessageBox.Show("店铺信息不完整");
                 return;
             }
             //获取订单信息
-            DateTime? lastUpdatedAfter = getCurrentUserShopResponse.Data.OrderLastUpDatedAfter;
-            if (lastUpdatedAfter == null)
-            {
-                lastUpdatedAfter = AppConstant.lastUpdatedAfter;
-            }
-            //获取订单信息
-            new OrderService().synOrder(getCurrentUserShopResponse.Data.Id,getCurrentUserShopResponse.Data.SellerId, getCurrentUserShopResponse.Data.MwsAuthToken, lastUpdatedAfter);
+            new OrderService().synOrder(getCurrentUserShopResponse.Data);
             MessageBox.Show("数据同步中");
         }
     }
