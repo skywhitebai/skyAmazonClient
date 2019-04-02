@@ -88,6 +88,7 @@ namespace skyAmazonClient.Service
             {
                 if (ex.Message == "Request is throttled")
                 {
+                    Console.WriteLine("getListOrdersByNextToken Request is throttled: Sleep " + AppConstant.orderSleepTimeMinute + "minute");
                     Thread.Sleep(TimeSpan.FromMinutes(AppConstant.orderSleepTimeMinute));
                     return getListOrdersByNextToken(nextToken);
                 }
@@ -108,6 +109,7 @@ namespace skyAmazonClient.Service
             {
                 if (ex.Message == "Request is throttled")
                 {
+                    Console.WriteLine("getListOrders Request is throttled: Sleep " + AppConstant.orderSleepTimeMinute+"minute");
                     Thread.Sleep(TimeSpan.FromMinutes(AppConstant.orderSleepTimeMinute));
                     return getListOrders();
                 }
@@ -186,6 +188,7 @@ namespace skyAmazonClient.Service
             {
                 if (ex.Message == "Request is throttled")
                 {
+                    Console.WriteLine("getListOrderItemsByNextToken Request is throttled: Sleep " + AppConstant.orderItemSleepTimeSecond + "second");
                     Thread.Sleep(TimeSpan.FromMinutes(AppConstant.orderItemSleepTimeSecond));
                     return getListOrderItemsByNextToken(nextToken);
                 }
@@ -206,6 +209,7 @@ namespace skyAmazonClient.Service
             {
                 if (ex.Message == "Request is throttled")
                 {
+                    Console.WriteLine("getListOrderItems Request is throttled: Sleep " + AppConstant.orderItemSleepTimeSecond + "second");
                     Thread.Sleep(TimeSpan.FromMinutes(AppConstant.orderItemSleepTimeSecond));
                     return getListOrderItems(amazonOrderId);
                 }
