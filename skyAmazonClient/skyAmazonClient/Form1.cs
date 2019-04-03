@@ -139,9 +139,10 @@ namespace skyAmazonClient
                 MessageBox.Show("店铺信息不完整");
                 return;
             }
+            MessageBox.Show("数据同步中");
             //获取订单信息
             new OrderService().synOrder(getCurrentUserShopResponse.Data);
-            MessageBox.Show("数据同步中");
+            
         }
     }
 }
