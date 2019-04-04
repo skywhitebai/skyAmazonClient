@@ -88,7 +88,8 @@ namespace skyAmazonClient.Service
             {
                 if (ex.Message == "Request is throttled")
                 {
-                    Console.WriteLine(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + ":getListOrdersByNextToken Request is throttled: Sleep " + AppConstant.orderSleepTimeMinute + "minute");
+                    String dealInfo = "getListOrdersByNextToken Request is throttled: Sleep " + AppConstant.orderSleepTimeMinute + "minute";
+                    AppConstant.dealInfoAppend(dealInfo);
                     Thread.Sleep(TimeSpan.FromMinutes(AppConstant.orderSleepTimeMinute));
                     return getListOrdersByNextToken(nextToken);
                 }
@@ -109,7 +110,8 @@ namespace skyAmazonClient.Service
             {
                 if (ex.Message == "Request is throttled")
                 {
-                    Console.WriteLine(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + ":getListOrders Request is throttled: Sleep " + AppConstant.orderSleepTimeMinute + "minute");
+                    String dealInfo = "getListOrders Request is throttled: Sleep " + AppConstant.orderSleepTimeMinute + "minute";
+                    AppConstant.dealInfoAppend(dealInfo);
                     Thread.Sleep(TimeSpan.FromMinutes(AppConstant.orderSleepTimeMinute));
                     return getListOrders();
                 }
@@ -121,7 +123,8 @@ namespace skyAmazonClient.Service
         }
         private void dealOrder(int shopId,Order order)
         {
-            Console.WriteLine(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + ":dealOrder AmazonOrderId: " + order.AmazonOrderId);
+            String dealInfo ="dealOrder AmazonOrderId: " + order.AmazonOrderId;
+            AppConstant.dealInfoAppend(dealInfo);
             List<OrderItem> orderItems = getOrderItems(order.AmazonOrderId);
             String orderItemsJson = JsonNewtonsoft.ToJSON(orderItems);
             String orderJson = JsonNewtonsoft.ToJSON(order);
@@ -188,7 +191,8 @@ namespace skyAmazonClient.Service
             {
                 if (ex.Message == "Request is throttled")
                 {
-                    Console.WriteLine(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")+ ":getListOrderItemsByNextToken Request is throttled: Sleep " + AppConstant.orderItemSleepTimeSecond + "second");
+                    String dealInfo = "getListOrderItemsByNextToken Request is throttled: Sleep " + AppConstant.orderItemSleepTimeSecond + "second";
+                    AppConstant.dealInfoAppend(dealInfo);
                     Thread.Sleep(TimeSpan.FromSeconds(AppConstant.orderItemSleepTimeSecond));
                     return getListOrderItemsByNextToken(nextToken);
                 }
@@ -209,7 +213,8 @@ namespace skyAmazonClient.Service
             {
                 if (ex.Message == "Request is throttled")
                 {
-                    Console.WriteLine(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + ":getListOrderItems Request is throttled: Sleep " + AppConstant.orderItemSleepTimeSecond + "second");
+                    String dealInfo = "getListOrderItems Request is throttled: Sleep " + AppConstant.orderItemSleepTimeSecond + "second";
+                    AppConstant.dealInfoAppend(dealInfo);
                     Thread.Sleep(TimeSpan.FromSeconds(AppConstant.orderItemSleepTimeSecond));
                     return getListOrderItems(amazonOrderId);
                 }

@@ -31,5 +31,18 @@ namespace skyAmazonClient
         public static long sleepTime = 60 * 1000;
         public static double orderSleepTimeMinute = 3;
         public static double orderItemSleepTimeSecond = 30;
+        public static double synOrderSleepTimeMinute=30;
+        public static List<string> dealInfo=new List<string>();
+
+
+
+        internal static void dealInfoAppend(string dealInfoAppend)
+        {
+           if(dealInfo.Count>20){
+               dealInfo.RemoveAt(0);
+           }            
+            dealInfo.Add(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + ":"+dealInfoAppend);
+            Console.WriteLine(dealInfoAppend);
+        }
     }
 }
