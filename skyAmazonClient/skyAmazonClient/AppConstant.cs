@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace skyAmazonClient
@@ -33,7 +34,8 @@ namespace skyAmazonClient
         public static double orderItemSleepTimeSecond = 30;
         public static double synOrderSleepTimeMinute=30;
         public static List<string> dealInfo=new List<string>();
-
+        public static Thread threadSynOrder;
+        public static Thread threadShowDealInfo;
 
 
         internal static void dealInfoAppend(string dealInfoAppend)

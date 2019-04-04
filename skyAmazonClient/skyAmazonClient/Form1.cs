@@ -64,13 +64,21 @@ namespace skyAmazonClient
                 return;
             }
             AppConstant.dealInfoAppend("开始同步数据");
-            Thread t1 = new Thread(new ThreadStart(
+            if (AppConstant.threadShowDealInfo != null)
+            {
+                AppConstant.threadShowDealInfo.Abort();
+            }
+            AppConstant.threadShowDealInfo = new Thread(new ThreadStart(
                showDealInfo));
-            t1.Start(); //启动线程
+            AppConstant.threadShowDealInfo.Start(); //启动线程
             shop = getCurrentUserShopResponse.Data;
-            Thread t2 = new Thread(new ThreadStart(
+            if (AppConstant.threadSynOrder != null)
+            {
+                AppConstant.threadSynOrder.Abort();
+            }
+            AppConstant.threadSynOrder = new Thread(new ThreadStart(
                synOrder));
-            t2.Start(); //启动线程
+            AppConstant.threadSynOrder.Start(); //启动线程
 
             
             
