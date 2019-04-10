@@ -85,22 +85,33 @@ namespace skyAmazonClient
         }
         private void showDealInfo()
         {
+           while(true){
+               doShowDealInfo();
+               Thread.Sleep(TimeSpan.FromSeconds(1));
+           }
+        }
+        void doShowDealInfo()
+        {
             StringBuilder sbDealInfo = new StringBuilder();
             foreach (String str in AppConstant.dealInfo)
             {
                 sbDealInfo.Append(str).Append("\r\n");
             }
             txtDealInfo.Text = sbDealInfo.ToString();
-            Thread.Sleep(TimeSpan.FromSeconds(1));
-            showDealInfo();
         }
         private void synOrder()
         {
+            while (true)
+            {
+                doSynOrder();
+                Thread.Sleep(TimeSpan.FromMinutes(AppConstant.synOrderSleepTimeMinute));
+            }
+        }
+        void doSynOrder()
+        {
             //获取订单信息
             new OrderService().synOrder(shop);
-            AppConstant.dealInfoAppend("同步结束等待" + AppConstant.synOrderSleepTimeMinute+"分钟");
-            Thread.Sleep(TimeSpan.FromMinutes(AppConstant.synOrderSleepTimeMinute));
-            synOrder();
+            AppConstant.dealInfoAppend("同步结束等待" + AppConstant.synOrderSleepTimeMinute + "分钟");
         }
     }
 }

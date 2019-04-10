@@ -42,9 +42,10 @@ namespace skyAmazonClient
         {
            if(dealInfo.Count>20){
                dealInfo.RemoveAt(0);
-           }            
-            dealInfo.Add(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + ":"+dealInfoAppend);
-            Console.WriteLine(dealInfoAppend);
+           }
+           String info = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + ":" + dealInfoAppend;
+           dealInfo.Add(info);
+           Console.WriteLine(info);
         }
     }
 }
