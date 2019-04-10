@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace skyAmazonClient
@@ -31,5 +32,20 @@ namespace skyAmazonClient
         public static long sleepTime = 60 * 1000;
         public static double orderSleepTimeMinute = 3;
         public static double orderItemSleepTimeSecond = 30;
+        public static double synOrderSleepTimeMinute=30;
+        public static List<string> dealInfo=new List<string>();
+        public static Thread threadSynOrder;
+        public static Thread threadShowDealInfo;
+
+
+        internal static void dealInfoAppend(string dealInfoAppend)
+        {
+           if(dealInfo.Count>20){
+               dealInfo.RemoveAt(0);
+           }
+           String info = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + ":" + dealInfoAppend;
+           dealInfo.Add(info);
+           Console.WriteLine(info);
+        }
     }
 }

@@ -21,7 +21,7 @@ namespace skyAmazonClient.Service
         string sellerId ;
         string mwsAuthToken ;
         Int32 shopId;
-        DateTime lastUpdatedAfter;
+        DateTime? lastUpdatedAfter;
         string shopMarketplaceId;
         MarketplaceWebServiceOrders.MarketplaceWebServiceOrders client;
         public void synOrder(Shop shop)
@@ -88,7 +88,8 @@ namespace skyAmazonClient.Service
             {
                 if (ex.Message == "Request is throttled")
                 {
-                    Console.WriteLine("getListOrdersByNextToken Request is throttled: Sleep " + AppConstant.orderSleepTimeMinute + "minute");
+                    String dealInfo = "getListOrdersByNextToken Request is throttled: Sleep " + AppConstant.orderSleepTimeMinute + "minute";
+                    AppConstant.dealInfoAppend(dealInfo);
                     Thread.Sleep(TimeSpan.FromMinutes(AppConstant.orderSleepTimeMinute));
                     return getListOrdersByNextToken(nextToken);
                 }
@@ -109,7 +110,8 @@ namespace skyAmazonClient.Service
             {
                 if (ex.Message == "Request is throttled")
                 {
-                    Console.WriteLine("getListOrders Request is throttled: Sleep " + AppConstant.orderSleepTimeMinute+"minute");
+                    String dealInfo = "getListOrders Request is throttled: Sleep " + AppConstant.orderSleepTimeMinute + "minute";
+                    AppConstant.dealInfoAppend(dealInfo);
                     Thread.Sleep(TimeSpan.FromMinutes(AppConstant.orderSleepTimeMinute));
                     return getListOrders();
                 }
@@ -121,7 +123,8 @@ namespace skyAmazonClient.Service
         }
         private void dealOrder(int shopId,Order order)
         {
-            Console.WriteLine("dealOrder AmazonOrderId: " + order.AmazonOrderId);
+            String dealInfo ="dealOrder AmazonOrderId: " + order.AmazonOrderId;
+            AppConstant.dealInfoAppend(dealInfo);
             List<OrderItem> orderItems = getOrderItems(order.AmazonOrderId);
             String orderItemsJson = JsonNewtonsoft.ToJSON(orderItems);
             String orderJson = JsonNewtonsoft.ToJSON(order);
@@ -188,8 +191,9 @@ namespace skyAmazonClient.Service
             {
                 if (ex.Message == "Request is throttled")
                 {
-                    Console.WriteLine("getListOrderItemsByNextToken Request is throttled: Sleep " + AppConstant.orderItemSleepTimeSecond + "second");
-                    Thread.Sleep(TimeSpan.FromMinutes(AppConstant.orderItemSleepTimeSecond));
+                    String dealInfo = "getListOrderItemsByNextToken Request is throttled: Sleep " + AppConstant.orderItemSleepTimeSecond + "second";
+                    AppConstant.dealInfoAppend(dealInfo);
+                    Thread.Sleep(TimeSpan.FromSeconds(AppConstant.orderItemSleepTimeSecond));
                     return getListOrderItemsByNextToken(nextToken);
                 }
                 else
@@ -209,8 +213,9 @@ namespace skyAmazonClient.Service
             {
                 if (ex.Message == "Request is throttled")
                 {
-                    Console.WriteLine("getListOrderItems Request is throttled: Sleep " + AppConstant.orderItemSleepTimeSecond + "second");
-                    Thread.Sleep(TimeSpan.FromMinutes(AppConstant.orderItemSleepTimeSecond));
+                    String dealInfo = "getListOrderItems Request is throttled: Sleep " + AppConstant.orderItemSleepTimeSecond + "second";
+                    AppConstant.dealInfoAppend(dealInfo);
+                    Thread.Sleep(TimeSpan.FromSeconds(AppConstant.orderItemSleepTimeSecond));
                     return getListOrderItems(amazonOrderId);
                 }
                 else
@@ -235,7 +240,7 @@ namespace skyAmazonClient.Service
             ListOrdersRequest request = new ListOrdersRequest();
             request.SellerId = sellerId;
             request.MWSAuthToken = mwsAuthToken;
-            request.LastUpdatedAfter = lastUpdatedAfter;
+            request.LastUpdatedAfter = lastUpdatedAfter.Value;
             List<string> orderStatus = new List<string>();
             request.OrderStatus = orderStatus;
             List<string> marketplaceId = new List<string>();

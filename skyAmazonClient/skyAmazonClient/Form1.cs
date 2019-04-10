@@ -20,86 +20,10 @@ namespace skyAmazonClient
     {
         public Form1()
         {
+            Control.CheckForIllegalCrossThreadCalls = false;
             InitializeComponent();
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            test();
-        }
-
-        void test(){
-            
-             // TODO: Set the below configuration variables before attempting to run
-
-            // Developer AWS access key replaceWithAccessKey
-            string accessKey = "AKIAJA5JLNJESHZCDIKA";
-
-            // Developer AWS secret key replaceWithSecretKey
-            string secretKey = "QmfwJDGhNHG7Cm8fIslnK/3Mk9DTIolha/vaSoKs";
-
-            // The client application name CSharpSampleCode
-            string appName = "skyddt";
-
-            // The client application version
-            string appVersion = "1.0";
-
-            // The endpoint for region service and version (see developer guide)
-            // ex: https://mws.amazonservices.com replaceWithServiceURL
-            string serviceURL = "https://mws.amazonservices.com";
-
-            // Create a configuration object
-            MarketplaceWebServiceOrdersConfig config = new MarketplaceWebServiceOrdersConfig();
-            config.ServiceURL = serviceURL;
-            // Set other client connection configurations here if needed
-            // Create the client itself
-            MarketplaceWebServiceOrders.MarketplaceWebServiceOrders client = new MarketplaceWebServiceOrdersClient(accessKey, secretKey, appName, appVersion, config);
-
-            MarketplaceWebServiceOrdersSample sample = new MarketplaceWebServiceOrdersSample(client);
-
-            // Uncomment the operation you'd like to test here
-            // TODO: Modify the request created in the Invoke method to be valid
-
-            try 
-            {
-                IMWSResponse response = null;
-                //response = sample.InvokeGetOrder();
-                // response = sample.InvokeGetServiceStatus();
-                 response = sample.InvokeListOrderItems();
-                // response = sample.InvokeListOrderItemsByNextToken();
-                //response = sample.InvokeListOrders();
-                //response = sample.InvokeListOrdersByNextToken();
-                Console.WriteLine("Response:");
-                ResponseHeaderMetadata rhmd = response.ResponseHeaderMetadata;
-                // We recommend logging the request id and timestamp of every call.
-                Console.WriteLine("RequestId: " + rhmd.RequestId);
-                Console.WriteLine("Timestamp: " + rhmd.Timestamp);
-                string responseXml = response.ToXML();
-                //string responseJson = JsonJavaScriptSerializer.ToJSON(response);
-                string responseJson2 = JsonNewtonsoft.ToJSON(response);
-                //Console.WriteLine(responseXml);
-                //Console.WriteLine(responseJson);
-                Console.WriteLine(responseJson2);
-                //Console.WriteLine(response.ToJSON());                
-            }
-            catch (MarketplaceWebServiceOrdersException ex)
-            {
-                // Exception properties are important for diagnostics.
-                ResponseHeaderMetadata rhmd = ex.ResponseHeaderMetadata;
-                Console.WriteLine("Service Exception:");
-                if(rhmd != null)
-                {
-                    Console.WriteLine("RequestId: " + rhmd.RequestId);
-                    Console.WriteLine("Timestamp: " + rhmd.Timestamp);
-                }
-                Console.WriteLine("Message: " + ex.Message);
-                Console.WriteLine("StatusCode: " + ex.StatusCode);
-                Console.WriteLine("ErrorCode: " + ex.ErrorCode);
-                Console.WriteLine("ErrorType: " + ex.ErrorType);
-                throw ex;
-            }
-        }
-
+        private Shop shop;
         private void btnLogin_Click(object sender, EventArgs e)
         {
             String userName = txtUserName.Text;
@@ -139,9 +63,55 @@ namespace skyAmazonClient
                 MessageBox.Show("店铺信息不完整");
                 return;
             }
+            AppConstant.dealInfoAppend("开始同步数据");
+            if (AppConstant.threadShowDealInfo != null)
+            {
+                AppConstant.threadShowDealInfo.Abort();
+            }
+            AppConstant.threadShowDealInfo = new Thread(new ThreadStart(
+               showDealInfo));
+            AppConstant.threadShowDealInfo.Start(); //启动线程
+            shop = getCurrentUserShopResponse.Data;
+            if (AppConstant.threadSynOrder != null)
+            {
+                AppConstant.threadSynOrder.Abort();
+            }
+            AppConstant.threadSynOrder = new Thread(new ThreadStart(
+               synOrder));
+            AppConstant.threadSynOrder.Start(); //启动线程
+
+            
+            
+        }
+        private void showDealInfo()
+        {
+           while(true){
+               doShowDealInfo();
+               Thread.Sleep(TimeSpan.FromSeconds(1));
+           }
+        }
+        void doShowDealInfo()
+        {
+            StringBuilder sbDealInfo = new StringBuilder();
+            foreach (String str in AppConstant.dealInfo)
+            {
+                sbDealInfo.Append(str).Append("\r\n");
+            }
+            txtDealInfo.Text = sbDealInfo.ToString();
+        }
+        private void synOrder()
+        {
+            while (true)
+            {
+                doSynOrder();
+                Thread.Sleep(TimeSpan.FromMinutes(AppConstant.synOrderSleepTimeMinute));
+            }
+        }
+        void doSynOrder()
+        {
             //获取订单信息
-            new OrderService().synOrder(getCurrentUserShopResponse.Data);
-            MessageBox.Show("数据同步中");
+            new OrderService().synOrder(shop);
+            AppConstant.dealInfoAppend("同步结束等待" + AppConstant.synOrderSleepTimeMinute + "分钟");
         }
     }
 }

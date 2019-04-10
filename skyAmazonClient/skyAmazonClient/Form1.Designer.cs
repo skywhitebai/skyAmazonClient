@@ -33,11 +33,12 @@
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.txtDealInfo = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(92, 152);
+            this.btnLogin.Location = new System.Drawing.Point(107, 132);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(109, 23);
             this.btnLogin.TabIndex = 0;
@@ -79,11 +80,21 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "密码";
             // 
+            // txtDealInfo
+            // 
+            this.txtDealInfo.Location = new System.Drawing.Point(265, 13);
+            this.txtDealInfo.Multiline = true;
+            this.txtDealInfo.Name = "txtDealInfo";
+            this.txtDealInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtDealInfo.Size = new System.Drawing.Size(530, 306);
+            this.txtDealInfo.TabIndex = 5;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(299, 229);
+            this.ClientSize = new System.Drawing.Size(807, 331);
+            this.Controls.Add(this.txtDealInfo);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtPassword);
@@ -103,6 +114,7 @@
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtDealInfo;
     }
 }
 
