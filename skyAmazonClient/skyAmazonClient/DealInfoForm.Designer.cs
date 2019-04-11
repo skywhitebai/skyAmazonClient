@@ -38,14 +38,14 @@
             this.txtDealInfo.Multiline = true;
             this.txtDealInfo.Name = "txtDealInfo";
             this.txtDealInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtDealInfo.Size = new System.Drawing.Size(747, 468);
+            this.txtDealInfo.Size = new System.Drawing.Size(571, 358);
             this.txtDealInfo.TabIndex = 6;
             // 
             // DealInfoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(842, 521);
+            this.ClientSize = new System.Drawing.Size(637, 414);
             this.Controls.Add(this.txtDealInfo);
             this.Name = "DealInfoForm";
             this.Text = "处理信息";

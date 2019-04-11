@@ -109,6 +109,7 @@ namespace skyAmazonClient
             ListViewItem item = items[0];
             String taskName=item.SubItems[0].Text;
             DealInfoForm dealInfoForm = new DealInfoForm(taskName);
+            dealInfoForm.StartPosition = FormStartPosition.CenterParent;
             dealInfoForm.ShowDialog();
         }       
     }

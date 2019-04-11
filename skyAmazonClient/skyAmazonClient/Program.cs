@@ -17,11 +17,14 @@ namespace skyAmazonClient
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             LoginForm loginForm = new LoginForm();
+            loginForm.StartPosition = FormStartPosition.CenterScreen;
             loginForm.ShowDialog();
             if (loginForm.DialogResult == DialogResult.OK)
             {
                 loginForm.Dispose();
-                Application.Run(new MainForm());
+                MainForm mainForm = new MainForm();
+                mainForm.StartPosition = FormStartPosition.CenterScreen;
+                Application.Run(mainForm);
             }
             else if (loginForm.DialogResult == DialogResult.Cancel)
             {

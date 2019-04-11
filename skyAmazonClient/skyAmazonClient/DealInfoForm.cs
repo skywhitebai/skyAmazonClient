@@ -17,8 +17,9 @@ namespace skyAmazonClient
         Thread threadShowDealInfo;
         public DealInfoForm(String taskName)
         {
-            this.taskName = taskName;
             InitializeComponent();
+            this.taskName = taskName;
+            this.Text = taskName;
             showDealInfo();
         }
 
@@ -61,7 +62,11 @@ namespace skyAmazonClient
             {
                 threadShowDealInfo.Abort();
             }
-            this.Dispose();
+            base.OnVisibleChanged(e);
+            if (!IsHandleCreated)
+            {
+                this.Dispose();
+            }
         }
     }
 }
