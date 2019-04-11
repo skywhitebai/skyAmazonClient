@@ -89,7 +89,7 @@ namespace skyAmazonClient.Service
                 if (ex.Message == "Request is throttled")
                 {
                     String dealInfo = "getListOrdersByNextToken Request is throttled: Sleep " + AppConstant.orderSleepTimeMinute + "minute";
-                    AppConstant.dealInfoAppend(dealInfo);
+                     AppConstant.SynTaskInfo.OrderTask.dealInfoAppend(dealInfo);
                     Thread.Sleep(TimeSpan.FromMinutes(AppConstant.orderSleepTimeMinute));
                     return getListOrdersByNextToken(nextToken);
                 }
@@ -111,7 +111,7 @@ namespace skyAmazonClient.Service
                 if (ex.Message == "Request is throttled")
                 {
                     String dealInfo = "getListOrders Request is throttled: Sleep " + AppConstant.orderSleepTimeMinute + "minute";
-                    AppConstant.dealInfoAppend(dealInfo);
+                     AppConstant.SynTaskInfo.OrderTask.dealInfoAppend(dealInfo);
                     Thread.Sleep(TimeSpan.FromMinutes(AppConstant.orderSleepTimeMinute));
                     return getListOrders();
                 }
@@ -124,12 +124,13 @@ namespace skyAmazonClient.Service
         private void dealOrder(int shopId,Order order)
         {
             String dealInfo ="dealOrder AmazonOrderId: " + order.AmazonOrderId;
-            AppConstant.dealInfoAppend(dealInfo);
+             AppConstant.SynTaskInfo.OrderTask.dealInfoAppend(dealInfo);
             List<OrderItem> orderItems = getOrderItems(order.AmazonOrderId);
             String orderItemsJson = JsonNewtonsoft.ToJSON(orderItems);
             String orderJson = JsonNewtonsoft.ToJSON(order);
             saveOrder(shopId, orderJson, orderItemsJson);
             ShopService.updateLastUpdatedAfter(shopId, order.LastUpdateDate);
+            AppConstant.SynTaskInfo.OrderTask.SynDataNumber+= 1;
             lastUpdatedAfter = order.LastUpdateDate;
         }
         private void saveOrder(int shopId, string orderJson, string orderItemsJson)
@@ -192,7 +193,7 @@ namespace skyAmazonClient.Service
                 if (ex.Message == "Request is throttled")
                 {
                     String dealInfo = "getListOrderItemsByNextToken Request is throttled: Sleep " + AppConstant.orderItemSleepTimeSecond + "second";
-                    AppConstant.dealInfoAppend(dealInfo);
+                     AppConstant.SynTaskInfo.OrderTask.dealInfoAppend(dealInfo);
                     Thread.Sleep(TimeSpan.FromSeconds(AppConstant.orderItemSleepTimeSecond));
                     return getListOrderItemsByNextToken(nextToken);
                 }
@@ -214,7 +215,7 @@ namespace skyAmazonClient.Service
                 if (ex.Message == "Request is throttled")
                 {
                     String dealInfo = "getListOrderItems Request is throttled: Sleep " + AppConstant.orderItemSleepTimeSecond + "second";
-                    AppConstant.dealInfoAppend(dealInfo);
+                     AppConstant.SynTaskInfo.OrderTask.dealInfoAppend(dealInfo);
                     Thread.Sleep(TimeSpan.FromSeconds(AppConstant.orderItemSleepTimeSecond));
                     return getListOrderItems(amazonOrderId);
                 }
@@ -259,7 +260,7 @@ namespace skyAmazonClient.Service
             return this.client.ListOrders(request);
         }
 
-        public ListOrdersByNextTokenResponse InvokeListOrdersByNextToken(string nextToken)
+        private ListOrdersByNextTokenResponse InvokeListOrdersByNextToken(string nextToken)
         {
             // Create a request.
             ListOrdersByNextTokenRequest request = new ListOrdersByNextTokenRequest();
@@ -268,7 +269,7 @@ namespace skyAmazonClient.Service
             request.NextToken = nextToken;
             return this.client.ListOrdersByNextToken(request);
         }
-        public ListOrderItemsResponse InvokeListOrderItems(string amazonOrderId)
+        private ListOrderItemsResponse InvokeListOrderItems(string amazonOrderId)
         {
             ListOrderItemsRequest request = new ListOrderItemsRequest();
             request.SellerId = sellerId;
@@ -277,7 +278,7 @@ namespace skyAmazonClient.Service
             return this.client.ListOrderItems(request);
         }
 
-        public ListOrderItemsByNextTokenResponse InvokeListOrderItemsByNextToken(string nextToken)
+        private ListOrderItemsByNextTokenResponse InvokeListOrderItemsByNextToken(string nextToken)
         {
             ListOrderItemsByNextTokenRequest request = new ListOrderItemsByNextTokenRequest();
             request.SellerId = sellerId;

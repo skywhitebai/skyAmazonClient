@@ -31,3 +31,5 @@ F:\code\github\skyAmazonClient\skyAmazonClient\skyAmazonClient\obj\Debug\skyAmaz
 F:\code\github\skyAmazonClient\skyAmazonClient\skyAmazonClient\obj\Debug\skyAmazonClient.Form1.resources
 F:\code\github\skyAmazonClient\skyAmazonClient\skyAmazonClient\obj\Debug\skyAmazonClient.Properties.Resources.resources
 F:\code\github\skyAmazonClient\skyAmazonClient\skyAmazonClient\obj\Debug\skyAmazonClient.csproj.GenerateResource.Cache
+F:\code\github\skyAmazonClient\skyAmazonClient\skyAmazonClient\obj\Debug\skyAmazonClient.MainForm.resources
+F:\code\github\skyAmazonClient\skyAmazonClient\skyAmazonClient\obj\Debug\skyAmazonClient.LoginForm.resources
