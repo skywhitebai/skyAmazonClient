@@ -64,7 +64,7 @@ namespace skyAmazonClient
         private void initInventoryTask()
         {
             SynTask inventoryTask = new SynTask();
-            inventoryTask.TaskName = "库存同步";
+            inventoryTask.TaskName = AppConstant.synInventoryTaskName;
             inventoryTask.ExecuteTimes = 0;
             inventoryTask.SynDataNumber = 0;
             inventoryTask.Status = SynTask.statusEnable;
@@ -76,7 +76,7 @@ namespace skyAmazonClient
         private void initOrderTask()
         {
             SynTask orderTask = new SynTask();
-            orderTask.TaskName = "订单同步";
+            orderTask.TaskName = AppConstant.synOrderTaskName; 
             orderTask.ExecuteTimes = 0;
             orderTask.SynDataNumber = 0;
             orderTask.Status = SynTask.statusEnable;
@@ -97,6 +97,19 @@ namespace skyAmazonClient
             {
                 e.Cancel = true;
             }
+        }
+
+        private void lvTask_DoubleClick(object sender, EventArgs e)
+        {
+            var items = this.lvTask.SelectedItems;
+            if (items.Count == 0)
+            {
+                return;
+            }
+            ListViewItem item = items[0];
+            String taskName=item.SubItems[0].Text;
+            DealInfoForm dealInfoForm = new DealInfoForm(taskName);
+            dealInfoForm.ShowDialog();
         }       
     }
 }

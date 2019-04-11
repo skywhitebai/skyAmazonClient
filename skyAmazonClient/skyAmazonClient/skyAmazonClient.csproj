@@ -45,6 +45,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DealInfoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DealInfoForm.Designer.cs">
+      <DependentUpon>DealInfoForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Entity\BaseResponse.cs" />
     <Compile Include="Entity\CurrentUserInfo.cs" />
     <Compile Include="Entity\Shop.cs" />
@@ -80,6 +86,9 @@
     <Compile Include="SynTasks\OrderSynTask.cs" />
     <Compile Include="util\ConfigUtils.cs" />
     <Compile Include="util\DateTimeUtils.cs" />
+    <EmbeddedResource Include="DealInfoForm.resx">
+      <DependentUpon>DealInfoForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

@@ -30,8 +30,15 @@ namespace skyAmazonClient.SynTasks
         }
         static void doSynOrder()
         {
-            //获取订单信息
-            new OrderService().synOrder(AppConstant.currentUserShop);
+            try
+            {
+                //获取订单信息
+                new OrderService().synOrder(AppConstant.currentUserShop);
+            }
+            catch (Exception ex)
+            {
+                AppConstant.SynTaskInfo.OrderTask.dealInfoAppend("异常:" + ex.Message);
+            }
         }
     }
 }

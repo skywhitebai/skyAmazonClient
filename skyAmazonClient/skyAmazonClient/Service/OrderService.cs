@@ -95,6 +95,7 @@ namespace skyAmazonClient.Service
                 }
                 else
                 {
+                    AppConstant.SynTaskInfo.OrderTask.dealInfoAppend("异常:" + ex.Message);
                     return null;
                 }
             }
@@ -117,6 +118,7 @@ namespace skyAmazonClient.Service
                 }
                 else
                 {
+                    AppConstant.SynTaskInfo.OrderTask.dealInfoAppend("异常:"+ex.Message);
                     return null;
                 }
             }
@@ -199,6 +201,7 @@ namespace skyAmazonClient.Service
                 }
                 else
                 {
+                    AppConstant.SynTaskInfo.OrderTask.dealInfoAppend("异常:" + ex.Message);
                     return null;
                 }
             }
@@ -221,6 +224,7 @@ namespace skyAmazonClient.Service
                 }
                 else
                 {
+                    AppConstant.SynTaskInfo.OrderTask.dealInfoAppend("异常:" + ex.Message);
                     return null;
                 }
             }

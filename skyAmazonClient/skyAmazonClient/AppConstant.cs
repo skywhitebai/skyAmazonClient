@@ -40,7 +40,8 @@ namespace skyAmazonClient
         public static Shop currentUserShop;
         public static CurrentUserInfo currentUserInfo;
         public static Thread threadBindLvTask;
-        
+        public const String synOrderTaskName = "订单同步";
+        public const String synInventoryTaskName = "库存同步";
 
         internal static void dealInfoAppend(string dealInfoAppend)
         {
@@ -62,11 +63,12 @@ namespace skyAmazonClient
             public static SynTask OrderTask
             {
                 get { return SynTaskInfo.orderTask; }
-                set {
+                set
+                {
                     if (SynTaskInfo.orderTask != null && SynTaskInfo.orderTask.ExecuteThread != null)
                     {
                         SynTaskInfo.orderTask.ExecuteThread.Abort();
-                    } 
+                    }
                     SynTaskInfo.orderTask = value;
                 }
             }
@@ -78,12 +80,14 @@ namespace skyAmazonClient
             public static SynTask InventoryTask
             {
                 get { return SynTaskInfo.inventoryTask; }
-                set {
+                set
+                {
                     if (SynTaskInfo.inventoryTask != null && SynTaskInfo.inventoryTask.ExecuteThread != null)
                     {
                         SynTaskInfo.inventoryTask.ExecuteThread.Abort();
                     }
-                    SynTaskInfo.inventoryTask = value; }
+                    SynTaskInfo.inventoryTask = value;
+                }
             }
         }
     }

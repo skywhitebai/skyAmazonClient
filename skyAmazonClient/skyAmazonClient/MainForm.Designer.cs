@@ -62,6 +62,7 @@
             this.lvTask.TabIndex = 1;
             this.lvTask.UseCompatibleStateImageBehavior = false;
             this.lvTask.View = System.Windows.Forms.View.Details;
+            this.lvTask.DoubleClick += new System.EventHandler(this.lvTask_DoubleClick);
             // 
             // taskName
             // 
