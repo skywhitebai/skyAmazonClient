@@ -34,3 +34,6 @@ F:\code\github\skyAmazonClient\skyAmazonClient\skyAmazonClient\obj\Debug\skyAmaz
 F:\code\github\skyAmazonClient\skyAmazonClient\skyAmazonClient\obj\Debug\skyAmazonClient.MainForm.resources
 F:\code\github\skyAmazonClient\skyAmazonClient\skyAmazonClient\obj\Debug\skyAmazonClient.LoginForm.resources
 F:\code\github\skyAmazonClient\skyAmazonClient\skyAmazonClient\obj\Debug\skyAmazonClient.DealInfoForm.resources
+D:\src\amazonform\skyAmazonClient\skyAmazonClient\skyAmazonClient\obj\Debug\skyAmazonClient.DealInfoForm.resources
+D:\src\amazonform\skyAmazonClient\skyAmazonClient\skyAmazonClient\obj\Debug\skyAmazonClient.LoginForm.resources
+D:\src\amazonform\skyAmazonClient\skyAmazonClient\skyAmazonClient\obj\Debug\skyAmazonClient.MainForm.resources

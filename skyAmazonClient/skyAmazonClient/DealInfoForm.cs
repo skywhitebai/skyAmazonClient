@@ -32,28 +32,30 @@ namespace skyAmazonClient
         }
         void doShowDealInfo()
         {
-            StringBuilder sbDealInfo = new StringBuilder();
-            List<String> dealInfo=null;
-            switch (taskName)
+            while (true)
             {
-                case AppConstant.synOrderTaskName:
-                    dealInfo=AppConstant.SynTaskInfo.OrderTask.DealInfoList;
-                    break;
-                case AppConstant.synInventoryTaskName:
-                    dealInfo = AppConstant.SynTaskInfo.InventoryTask.DealInfoList;
-                    break;
-            }
-            if (dealInfo != null)
-            {
-                foreach (String str in dealInfo)
+                StringBuilder sbDealInfo = new StringBuilder();
+                List<String> dealInfo = null;
+                switch (taskName)
                 {
-                    sbDealInfo.Append(str).Append("\r\n");
+                    case AppConstant.synOrderTaskName:
+                        dealInfo = AppConstant.SynTaskInfo.OrderTask.DealInfoList;
+                        break;
+                    case AppConstant.synInventoryTaskName:
+                        dealInfo = AppConstant.SynTaskInfo.InventoryTask.DealInfoList;
+                        break;
                 }
-                txtDealInfo.Text = sbDealInfo.ToString(); 
-            }
-                           
-            Thread.Sleep(TimeSpan.FromSeconds(1));
-            doShowDealInfo();
+                if (dealInfo != null)
+                {
+                    foreach (String str in dealInfo)
+                    {
+                        sbDealInfo.Append(str).Append("\r\n");
+                    }
+                    txtDealInfo.Text = sbDealInfo.ToString();
+                }
+
+                Thread.Sleep(TimeSpan.FromSeconds(1));
+            }        
         }
 
         private void DealInfoForm_FormClosing(object sender, FormClosingEventArgs e)
