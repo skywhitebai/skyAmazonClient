@@ -35,14 +35,14 @@ namespace skyAmazonClient
             while (true)
             {
                 StringBuilder sbDealInfo = new StringBuilder();
-                List<String> dealInfo = null;
+                String[] dealInfo = null;
                 switch (taskName)
                 {
                     case AppConstant.synOrderTaskName:
-                        dealInfo = AppConstant.SynTaskInfo.OrderTask.DealInfoList;
+                        dealInfo = AppConstant.SynTaskInfo.OrderTask.DealInfoList.ToArray();
                         break;
                     case AppConstant.synInventoryTaskName:
-                        dealInfo = AppConstant.SynTaskInfo.InventoryTask.DealInfoList;
+                        dealInfo = AppConstant.SynTaskInfo.InventoryTask.DealInfoList.ToArray();
                         break;
                 }
                 if (dealInfo != null)
