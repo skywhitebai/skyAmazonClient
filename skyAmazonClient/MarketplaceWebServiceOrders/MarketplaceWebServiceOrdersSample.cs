@@ -68,7 +68,7 @@ namespace MarketplaceWebServiceOrders {
             {
                 IMWSResponse response = null;
                 // response = sample.InvokeGetOrder();
-                // response = sample.InvokeGetServiceStatus();
+                //response = sample.InvokeGetServiceStatus();
                 // response = sample.InvokeListOrderItems();
                 // response = sample.InvokeListOrderItemsByNextToken();
                 // response = sample.InvokeListOrders();
