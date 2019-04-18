@@ -1,4 +1,5 @@
-﻿using System;
+﻿using skyAmazonClient.Service;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,7 @@ namespace skyAmazonClient
         public TestForm()
         {
             InitializeComponent();
+            new RecommendationsSectionService().synRecommendationsSection(AppConstant.currentUserShop);
         }
     }
 }

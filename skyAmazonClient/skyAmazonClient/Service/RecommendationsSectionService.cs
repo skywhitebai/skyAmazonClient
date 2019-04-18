@@ -39,7 +39,6 @@ namespace skyAmazonClient.Service
             Console.Write(json);
         }
 
-
         private ListRecommendationsResponse InvokeListRecommendations()
         {
             // Create a request.
