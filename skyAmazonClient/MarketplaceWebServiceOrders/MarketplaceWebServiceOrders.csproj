@@ -88,6 +88,7 @@
     <Content Include="Mock\MarketplaceWebServiceOrders.Model.ListOrderItemsResponse.xml" />
     <Content Include="Mock\MarketplaceWebServiceOrders.Model.ListOrdersByNextTokenResponse.xml" />
     <Content Include="Mock\MarketplaceWebServiceOrders.Model.ListOrdersResponse.xml" />
+    <Content Include="readme.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MWSClientCsRuntime\MWSClientCsRuntime.csproj">

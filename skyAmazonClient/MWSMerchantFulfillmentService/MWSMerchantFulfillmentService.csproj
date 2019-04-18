@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{53800238-9ACB-41A0-B3B5-AFE3AD0BF34F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MWSMerchantFulfillmentService</RootNamespace>
+    <AssemblyName>MWSMerchantFulfillmentService</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Mock\MWSMerchantFulfillmentServiceMock.cs" />
+    <Compile Include="Model\Address.cs" />
+    <Compile Include="Model\CancelShipmentRequest.cs" />
+    <Compile Include="Model\CancelShipmentResponse.cs" />
+    <Compile Include="Model\CancelShipmentResult.cs" />
+    <Compile Include="Model\CreateShipmentRequest.cs" />
+    <Compile Include="Model\CreateShipmentResponse.cs" />
+    <Compile Include="Model\CreateShipmentResult.cs" />
+    <Compile Include="Model\CurrencyAmount.cs" />
+    <Compile Include="Model\FileContents.cs" />
+    <Compile Include="Model\GetEligibleShippingServicesRequest.cs" />
+    <Compile Include="Model\GetEligibleShippingServicesResponse.cs" />
+    <Compile Include="Model\GetEligibleShippingServicesResult.cs" />
+    <Compile Include="Model\GetServiceStatusRequest.cs" />
+    <Compile Include="Model\GetServiceStatusResponse.cs" />
+    <Compile Include="Model\GetServiceStatusResult.cs" />
+    <Compile Include="Model\GetShipmentRequest.cs" />
+    <Compile Include="Model\GetShipmentResponse.cs" />
+    <Compile Include="Model\GetShipmentResult.cs" />
+    <Compile Include="Model\IMWSResponse.cs" />
+    <Compile Include="Model\Item.cs" />
+    <Compile Include="Model\Label.cs" />
+    <Compile Include="Model\LabelCustomization.cs" />
+    <Compile Include="Model\LabelDimensions.cs" />
+    <Compile Include="Model\PackageDimensions.cs" />
+    <Compile Include="Model\ResponseHeaderMetadata.cs" />
+    <Compile Include="Model\ResponseMetadata.cs" />
+    <Compile Include="Model\Shipment.cs" />
+    <Compile Include="Model\ShipmentRequestDetails.cs" />
+    <Compile Include="Model\ShippingService.cs" />
+    <Compile Include="Model\ShippingServiceOptions.cs" />
+    <Compile Include="Model\TemporarilyUnavailableCarrier.cs" />
+    <Compile Include="Model\TermsAndConditionsNotAcceptedCarrier.cs" />
+    <Compile Include="Model\Weight.cs" />
+    <Compile Include="MWSMerchantFulfillmentService.cs" />
+    <Compile Include="MWSMerchantFulfillmentServiceClient.cs" />
+    <Compile Include="MWSMerchantFulfillmentServiceConfig.cs" />
+    <Compile Include="MWSMerchantFulfillmentServiceException.cs" />
+    <Compile Include="MWSMerchantFulfillmentServiceSample.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Mock\MWSMerchantFulfillmentService.Model.CancelShipmentResponse.xml" />
+    <Content Include="Mock\MWSMerchantFulfillmentService.Model.CreateShipmentResponse.xml" />
+    <Content Include="Mock\MWSMerchantFulfillmentService.Model.GetEligibleShippingServicesResponse.xml" />
+    <Content Include="Mock\MWSMerchantFulfillmentService.Model.GetServiceStatusResponse.xml" />
+    <Content Include="Mock\MWSMerchantFulfillmentService.Model.GetShipmentResponse.xml" />
+    <Content Include="readme.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MWSClientCsRuntime\MWSClientCsRuntime.csproj">
+      <Project>{e6fc1ee2-37e7-4eb4-828e-f7c6ba446724}</Project>
+      <Name>MWSClientCsRuntime</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

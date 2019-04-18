@@ -76,14 +76,21 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\AccountService.cs" />
-    <Compile Include="Service\OrderAmazonService.cs" />
+    <Compile Include="Service\ListRecommendationsResponse.cs" />
     <Compile Include="Service\OrderService.cs" />
+    <Compile Include="Service\RecommendationsSectionService.cs" />
     <Compile Include="Service\ShopService.cs" />
     <Compile Include="Service\SysConfigService.cs" />
     <Compile Include="AppConstant.cs" />
     <Compile Include="Entity\SynTask.cs" />
     <Compile Include="SynTasks\InventorySynTask.cs" />
     <Compile Include="SynTasks\OrderSynTask.cs" />
+    <Compile Include="TestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TestForm.Designer.cs">
+      <DependentUpon>TestForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="util\ConfigUtils.cs" />
     <Compile Include="util\DateTimeUtils.cs" />
     <EmbeddedResource Include="DealInfoForm.resx">
@@ -107,6 +114,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="TestForm.resx">
+      <DependentUpon>TestForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -129,10 +139,17 @@
       <Project>{e6fc1ee2-37e7-4eb4-828e-f7c6ba446724}</Project>
       <Name>MWSClientCsRuntime</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MWSRecommendationsSectionService\MWSRecommendationsSectionService.csproj">
+      <Project>{d07e2e1a-f6e2-46a7-9d75-ef3cbf6b6a57}</Project>
+      <Name>MWSRecommendationsSectionService</Name>
+    </ProjectReference>
     <ProjectReference Include="..\skyCommon\skyCommon.csproj">
       <Project>{a94f8af4-396d-4684-93ae-748f6ecc0c10}</Project>
       <Name>skyCommon</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="readme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
