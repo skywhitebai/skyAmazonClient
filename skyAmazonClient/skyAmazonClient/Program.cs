@@ -23,8 +23,10 @@ namespace skyAmazonClient
             {
                 loginForm.Dispose();
                 MainForm mainForm = new MainForm();
+                TestForm testForm = new TestForm();
+                testForm.StartPosition = FormStartPosition.CenterScreen;
                 mainForm.StartPosition = FormStartPosition.CenterScreen;
-                Application.Run(mainForm);
+                Application.Run(testForm);
             }
             else if (loginForm.DialogResult == DialogResult.Cancel)
             {

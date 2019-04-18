@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace skyAmazonClient.Service
+namespace ClassLibrary1
 {
-    class OrderAmazonService
+    public class Class1
     {
     }
 }
