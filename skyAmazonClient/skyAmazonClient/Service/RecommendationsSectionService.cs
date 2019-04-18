@@ -47,7 +47,7 @@ namespace skyAmazonClient.Service
             request.MWSAuthToken = mwsAuthToken;
             request.SellerId = sellerId;
             string recommendationCategory = "Inventory";
-            request.RecommendationCategory = recommendationCategory;
+            //request.RecommendationCategory = recommendationCategory;
             List<CategoryQuery> categoryQueryList = new List<CategoryQuery>();
             request.CategoryQueryList = categoryQueryList;
             return this.client.ListRecommendations(request);

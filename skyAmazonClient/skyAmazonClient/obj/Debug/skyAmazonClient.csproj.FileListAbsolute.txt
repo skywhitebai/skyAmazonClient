@@ -40,3 +40,6 @@ D:\src\amazonform\skyAmazonClient\skyAmazonClient\skyAmazonClient\obj\Debug\skyA
 F:\code\github\skyAmazonClient\skyAmazonClient\skyAmazonClient\bin\Debug\MWSRecommendationsSectionService.dll
 F:\code\github\skyAmazonClient\skyAmazonClient\skyAmazonClient\bin\Debug\MWSRecommendationsSectionService.pdb
 F:\code\github\skyAmazonClient\skyAmazonClient\skyAmazonClient\obj\Debug\skyAmazonClient.TestForm.resources
+D:\src\amazonform\skyAmazonClient\skyAmazonClient\skyAmazonClient\obj\Debug\skyAmazonClient.TestForm.resources
+D:\src\amazonform\skyAmazonClient\skyAmazonClient\skyAmazonClient\bin\Debug\MWSRecommendationsSectionService.dll
+D:\src\amazonform\skyAmazonClient\skyAmazonClient\skyAmazonClient\bin\Debug\MWSRecommendationsSectionService.pdb

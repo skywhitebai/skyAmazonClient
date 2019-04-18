@@ -73,6 +73,12 @@
     <Content Include="Mock\MarketplaceWebServiceSellers.Model.ListMarketplaceParticipationsResponse.xml" />
     <Content Include="readme.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MWSClientCsRuntime\MWSClientCsRuntime.csproj">
+      <Project>{e6fc1ee2-37e7-4eb4-828e-f7c6ba446724}</Project>
+      <Name>MWSClientCsRuntime</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
