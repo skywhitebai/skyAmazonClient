@@ -76,9 +76,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\AccountService.cs" />
-    <Compile Include="Service\ListRecommendationsResponse.cs" />
     <Compile Include="Service\OrderService.cs" />
-    <Compile Include="Service\RecommendationsSectionService.cs" />
     <Compile Include="Service\ShopService.cs" />
     <Compile Include="Service\SysConfigService.cs" />
     <Compile Include="AppConstant.cs" />

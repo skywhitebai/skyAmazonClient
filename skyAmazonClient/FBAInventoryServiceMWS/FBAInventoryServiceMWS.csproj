@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3ECCEFB1-6E9A-41DF-B301-CFAB6702CFC6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FBAInventoryServiceMWS</RootNamespace>
+    <AssemblyName>FBAInventoryServiceMWS</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FBAInventoryServiceMWS.cs" />
+    <Compile Include="FBAInventoryServiceMWSClient.cs" />
+    <Compile Include="FBAInventoryServiceMWSConfig.cs" />
+    <Compile Include="FBAInventoryServiceMWSException.cs" />
+    <Compile Include="FBAInventoryServiceMWSSample.cs" />
+    <Compile Include="Mock\FBAInventoryServiceMWSMock.cs" />
+    <Compile Include="Model\GetServiceStatusRequest.cs" />
+    <Compile Include="Model\GetServiceStatusResponse.cs" />
+    <Compile Include="Model\GetServiceStatusResult.cs" />
+    <Compile Include="Model\IMWSResponse.cs" />
+    <Compile Include="Model\InventorySupply.cs" />
+    <Compile Include="Model\InventorySupplyDetail.cs" />
+    <Compile Include="Model\InventorySupplyDetailList.cs" />
+    <Compile Include="Model\InventorySupplyList.cs" />
+    <Compile Include="Model\ListInventorySupplyByNextTokenRequest.cs" />
+    <Compile Include="Model\ListInventorySupplyByNextTokenResponse.cs" />
+    <Compile Include="Model\ListInventorySupplyByNextTokenResult.cs" />
+    <Compile Include="Model\ListInventorySupplyRequest.cs" />
+    <Compile Include="Model\ListInventorySupplyResponse.cs" />
+    <Compile Include="Model\ListInventorySupplyResult.cs" />
+    <Compile Include="Model\ResponseHeaderMetadata.cs" />
+    <Compile Include="Model\ResponseMetadata.cs" />
+    <Compile Include="Model\SellerSkuList.cs" />
+    <Compile Include="Model\Timepoint.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Mock\FBAInventoryServiceMWS.Model.GetServiceStatusResponse.xml" />
+    <Content Include="Mock\FBAInventoryServiceMWS.Model.ListInventorySupplyByNextTokenResponse.xml" />
+    <Content Include="Mock\FBAInventoryServiceMWS.Model.ListInventorySupplyResponse.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MWSClientCsRuntime\MWSClientCsRuntime.csproj">
+      <Project>{e6fc1ee2-37e7-4eb4-828e-f7c6ba446724}</Project>
+      <Name>MWSClientCsRuntime</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

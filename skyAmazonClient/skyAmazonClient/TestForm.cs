@@ -16,7 +16,7 @@ namespace skyAmazonClient
         public TestForm()
         {
             InitializeComponent();
-            new RecommendationsSectionService().synRecommendationsSection(AppConstant.currentUserShop);
+           // new RecommendationsSectionService().synRecommendationsSection(AppConstant.currentUserShop);
         }
     }
 }
