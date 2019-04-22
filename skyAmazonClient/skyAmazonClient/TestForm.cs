@@ -1,4 +1,6 @@
-﻿using skyAmazonClient.Service;
+﻿using FBAInventoryServiceMWS.Model;
+using skyAmazonClient.Service;
+using skyCommon;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,7 +18,8 @@ namespace skyAmazonClient
         public TestForm()
         {
             InitializeComponent();
-            new RecommendationsSectionService().synRecommendationsSection(AppConstant.currentUserShop);
+         new InventoryService().syn(AppConstant.currentUserShop);
+        
         }
     }
 }

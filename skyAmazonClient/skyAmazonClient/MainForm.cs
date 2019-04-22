@@ -40,6 +40,7 @@ namespace skyAmazonClient
         {
             while (true)
             {
+                Thread.Sleep(TimeSpan.FromSeconds(3));
                 List<SynTask> list = new List<SynTask>();
                 list.Add(AppConstant.SynTaskInfo.OrderTask);
                 list.Add(AppConstant.SynTaskInfo.InventoryTask);
@@ -57,7 +58,6 @@ namespace skyAmazonClient
                     }
                     lvTask.Items.Add(lvi);
                 }
-                Thread.Sleep(TimeSpan.FromSeconds(3));
             }            
         }
 

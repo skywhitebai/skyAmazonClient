@@ -86,6 +86,12 @@ namespace skyAmazonClient.Entity
             get { return shopMarketplaceId; }
             set { shopMarketplaceId = value; }
         }
+        private DateTime? inventoryQueryStartDateTime;
 
+        public DateTime? InventoryQueryStartDateTime
+        {
+            get { return inventoryQueryStartDateTime; }
+            set { inventoryQueryStartDateTime = value; }
+        }
     }
 }

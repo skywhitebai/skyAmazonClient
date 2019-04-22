@@ -18,6 +18,7 @@ namespace skyAmazonClient
         public static string getCurrentUserShopUrl = ddtUrl + "/shop/getCurrentUserShop";
         public static string loginToken;
         public static DateTime? lastUpdatedAfter = new DateTime(1995, 1, 1);
+        public static DateTime? inventoryQueryStartDateTime = new DateTime(1995, 1, 1);
         public static string amazonAccessKey = SysConfigService.getConfigByKey("amazonAccessKey");
         public static string amazonSecretKey = SysConfigService.getConfigByKey("amazonSecretKey");
         public static string sellerId;
