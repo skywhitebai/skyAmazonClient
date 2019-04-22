@@ -15,7 +15,6 @@
  */
 
 using MarketplaceWebServiceOrders.Model;
-using skyCommon;
 using System;
 using System.Collections.Generic;
 
@@ -29,28 +28,26 @@ namespace MarketplaceWebServiceOrders {
     /// parameters below with sensible values and run.
     /// </summary>
     public class MarketplaceWebServiceOrdersSample {
-        static string sellerId = "A2MPQIZC358GVX";
 
-        static string mwsAuthToken = "amzn.mws.6eb25106-576e-b4b6-f9d2-ef9a6e342bac";
         public static void Main(string[] args)
         {
             // TODO: Set the below configuration variables before attempting to run
 
-            // Developer AWS access key replaceWithAccessKey
-            string accessKey = "530221270165";
+            // Developer AWS access key
+            string accessKey = "replaceWithAccessKey";
 
-            // Developer AWS secret key replaceWithSecretKey
-            string secretKey = "AKIAJA5JLNJESHZCDIKA";
+            // Developer AWS secret key
+            string secretKey = "replaceWithSecretKey";
 
-            // The client application name CSharpSampleCode
-            string appName = "skyddt";
+            // The client application name
+            string appName = "CSharpSampleCode";
 
             // The client application version
             string appVersion = "1.0";
 
             // The endpoint for region service and version (see developer guide)
-            // ex: https://mws.amazonservices.com replaceWithServiceURL
-            string serviceURL = "https://mws.amazonservices.com";
+            // ex: https://mws.amazonservices.com
+            string serviceURL = "replaceWithServiceURL";
 
             // Create a configuration object
             MarketplaceWebServiceOrdersConfig config = new MarketplaceWebServiceOrdersConfig();
@@ -68,7 +65,7 @@ namespace MarketplaceWebServiceOrders {
             {
                 IMWSResponse response = null;
                 // response = sample.InvokeGetOrder();
-                //response = sample.InvokeGetServiceStatus();
+                // response = sample.InvokeGetServiceStatus();
                 // response = sample.InvokeListOrderItems();
                 // response = sample.InvokeListOrderItemsByNextToken();
                 // response = sample.InvokeListOrders();
@@ -110,9 +107,9 @@ namespace MarketplaceWebServiceOrders {
         {
             // Create a request.
             GetOrderRequest request = new GetOrderRequest();
-            string sellerId = "A2MPQIZC358GVX";
+            string sellerId = "example";
             request.SellerId = sellerId;
-            string mwsAuthToken = "amzn.mws.6eb25106-576e-b4b6-f9d2-ef9a6e342bac";
+            string mwsAuthToken = "example";
             request.MWSAuthToken = mwsAuthToken;
             List<string> amazonOrderId = new List<string>();
             request.AmazonOrderId = amazonOrderId;
@@ -134,9 +131,11 @@ namespace MarketplaceWebServiceOrders {
         {
             // Create a request.
             ListOrderItemsRequest request = new ListOrderItemsRequest();
+            string sellerId = "example";
             request.SellerId = sellerId;
+            string mwsAuthToken = "example";
             request.MWSAuthToken = mwsAuthToken;
-            string amazonOrderId = "111-4176424-4051440";
+            string amazonOrderId = "example";
             request.AmazonOrderId = amazonOrderId;
             return this.client.ListOrderItems(request);
         }
@@ -158,30 +157,31 @@ namespace MarketplaceWebServiceOrders {
         {
             // Create a request.
             ListOrdersRequest request = new ListOrdersRequest();
+            string sellerId = "example";
             request.SellerId = sellerId;
+            string mwsAuthToken = "example";
             request.MWSAuthToken = mwsAuthToken;
-            DateTime createdAfter =TimeUtils.getDateTime("2018-1-1");
+            DateTime createdAfter = new DateTime();
             request.CreatedAfter = createdAfter;
-            /*DateTime createdBefore = new DateTime();
+            DateTime createdBefore = new DateTime();
             request.CreatedBefore = createdBefore;
             DateTime lastUpdatedAfter = new DateTime();
             request.LastUpdatedAfter = lastUpdatedAfter;
             DateTime lastUpdatedBefore = new DateTime();
-            request.LastUpdatedBefore = lastUpdatedBefore;*/
+            request.LastUpdatedBefore = lastUpdatedBefore;
             List<string> orderStatus = new List<string>();
             request.OrderStatus = orderStatus;
             List<string> marketplaceId = new List<string>();
-            marketplaceId.Add("ATVPDKIKX0DER");
             request.MarketplaceId = marketplaceId;
             List<string> fulfillmentChannel = new List<string>();
             request.FulfillmentChannel = fulfillmentChannel;
             List<string> paymentMethod = new List<string>();
             request.PaymentMethod = paymentMethod;
-            /*string buyerEmail = "example";
+            string buyerEmail = "example";
             request.BuyerEmail = buyerEmail;
             string sellerOrderId = "example";
-            request.SellerOrderId = sellerOrderId;*/
-            decimal maxResultsPerPage = 50;
+            request.SellerOrderId = sellerOrderId;
+            decimal maxResultsPerPage = 1;
             request.MaxResultsPerPage = maxResultsPerPage;
             List<string> tfmShipmentStatus = new List<string>();
             request.TFMShipmentStatus = tfmShipmentStatus;
@@ -194,9 +194,11 @@ namespace MarketplaceWebServiceOrders {
         {
             // Create a request.
             ListOrdersByNextTokenRequest request = new ListOrdersByNextTokenRequest();
+            string sellerId = "example";
             request.SellerId = sellerId;
+            string mwsAuthToken = "example";
             request.MWSAuthToken = mwsAuthToken;
-            string nextToken = "yJbtGvAxKqWaJqJYLDm0ZIfVkJJPpovR6FsDsnIUhRx0179C/MixOMNI3HOI22PIxqXyQLkGMBs8VhF73Xgy+zSnd15FyZfFw+Ie0bWiGqqISmxHBLw2DxL+iRQo05GQInTAy+XKVmRZBY+oaVuyc4D8eV8v09jgnc0fakXl2jqIg6p1kh+TfmwslhPndHo3f2GLmUGyr9UGnxD0RJmrrxhFP8KzGB62m5xaobyXfHTK9kUavBVIe6I4GnWh00CCRxHAuPz7ThbnYifjaQMwbdo/agXrXxQ7qvbPZF4sBh3q0sjrJVSK8Z0FUIyM6yC5boHX0iN4j9ZHYyxU0aduRctz+o/xrtAnrRGWhZAyx3A99JOpf0t2rujHfMVaM8PkCOPiJIQwYegcZqYSBKW+xwTqhDX3f7edbQeerBANGslIYyLVEcgCJJleM4+3p8lEJwljc7s2VBqsij1FjOr6mcYZXA7i7fYdONL/ezWtgY6YIKboBhBvhy7KF2BLIECM";
+            string nextToken = "example";
             request.NextToken = nextToken;
             return this.client.ListOrdersByNextToken(request);
         }
