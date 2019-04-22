@@ -1,4 +1,5 @@
-﻿using skyAmazonClient.Entity;
+﻿using FBAInventoryServiceMWS.Model;
+using skyAmazonClient.Entity;
 using skyAmazonClient.Service;
 using skyAmazonClient.util;
 using System;
@@ -16,6 +17,7 @@ namespace skyAmazonClient
         public static string clientLoginUrl = ddtUrl + "/account/clientLogin";
         public static string getConfigByKeyUrl = ddtUrl + "/config/getConfigByKey";
         public static string getCurrentUserShopUrl = ddtUrl + "/shop/getCurrentUserShop";
+
         public static string loginToken;
         public static DateTime? lastUpdatedAfter = new DateTime(1995, 1, 1);
         public static DateTime? inventoryQueryStartDateTime = new DateTime(1995, 1, 1);
@@ -25,6 +27,8 @@ namespace skyAmazonClient
         public static string mwsAuthToken;
         public static string saveOrderUrl = ddtUrl + "/order/saveOrder";
         public static string updateOrderLastUpdatedAfterUrl = ddtUrl + "/shop/updateOrderLastUpdatedAfter";
+        public static string saveInventoryUrl = ddtUrl + "/inventory/saveInventory";
+
         static AppConstant()
         {
             //clientLoginUrl = ddtUrl + "/account/clientLogin";
@@ -43,6 +47,7 @@ namespace skyAmazonClient
         public static Thread threadBindLvTask;
         public const String synOrderTaskName = "订单同步";
         public const String synInventoryTaskName = "库存同步";
+        public static double synInventoryTimeHour = 12;
 
         internal static void dealInfoAppend(string dealInfoAppend)
         {

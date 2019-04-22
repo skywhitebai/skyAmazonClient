@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace skyAmazonClient.Service
@@ -40,8 +41,92 @@ namespace skyAmazonClient.Service
             FBAInventoryServiceMWSConfig config = new FBAInventoryServiceMWSConfig();
             config.ServiceURL = serviceURL;
             client = new FBAInventoryServiceMWSClient(accessKey, secretKey, appName, appVersion, config);
-            ListInventorySupplyResponse response = InvokeListInventorySupply();
-            Console.WriteLine(JsonNewtonsoft.ToJSON(response));
+            ListInventorySupplyResponse listInventorySupplyResponse = getListInventorySupply();
+            if (listInventorySupplyResponse == null)
+            {
+                return;
+            }
+            saveInventory(listInventorySupplyResponse.ListInventorySupplyResult.InventorySupplyList.member);
+            if (String.IsNullOrEmpty(listInventorySupplyResponse.ListInventorySupplyResult.NextToken))
+            {
+                return;
+            }
+            ListInventorySupplyByNextTokenResponse listInventorySupplyByNextTokenResponse = getListInventorySupplyByNextToken(listInventorySupplyResponse.ListInventorySupplyResult.NextToken);
+            if (listInventorySupplyByNextTokenResponse == null)
+            {
+                return;
+            }
+            while (true)
+            {
+                saveInventory(listInventorySupplyByNextTokenResponse.ListInventorySupplyByNextTokenResult.InventorySupplyList.member);
+                if (String.IsNullOrEmpty(listInventorySupplyByNextTokenResponse.ListInventorySupplyByNextTokenResult.NextToken))
+                {
+                    return;
+                }
+                listInventorySupplyByNextTokenResponse = getListInventorySupplyByNextToken(listInventorySupplyByNextTokenResponse.ListInventorySupplyByNextTokenResult.NextToken);
+                if (listInventorySupplyByNextTokenResponse == null)
+                {
+                    return;
+                }
+            }
+        }
+
+        private ListInventorySupplyResponse getListInventorySupply()
+        {
+            try
+            {
+                return InvokeListInventorySupply();
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message == "Request is throttled")
+                {
+                    String dealInfo = "getListInventorySupply Request is throttled: Sleep " + AppConstant.orderSleepTimeMinute + "minute";
+                    AppConstant.SynTaskInfo.InventoryTask.dealInfoAppend(dealInfo);
+                    Thread.Sleep(TimeSpan.FromMinutes(AppConstant.orderSleepTimeMinute));
+                    return getListInventorySupply();
+                }
+                else
+                {
+                    AppConstant.SynTaskInfo.InventoryTask.dealInfoAppend("异常:" + ex.Message);
+                    return null;
+                }
+            }
+        }
+
+        private ListInventorySupplyByNextTokenResponse getListInventorySupplyByNextToken(string nextToken)
+        {
+            try
+            {
+                return InvokeListInventorySupplyByNextToken(nextToken); ;
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message == "Request is throttled")
+                {
+                    String dealInfo = "getListInventorySupplyByNextToken Request is throttled: Sleep " + AppConstant.orderSleepTimeMinute + "minute";
+                    AppConstant.SynTaskInfo.InventoryTask.dealInfoAppend(dealInfo);
+                    Thread.Sleep(TimeSpan.FromMinutes(AppConstant.orderSleepTimeMinute));
+                    return getListInventorySupplyByNextToken(nextToken);
+                }
+                else
+                {
+                    AppConstant.SynTaskInfo.InventoryTask.dealInfoAppend("异常:" + ex.Message);
+                    return null;
+                }
+            }
+        }
+
+        private void saveInventory(List<InventorySupply> list)
+        {
+            IDictionary<string, string> textParams = new Dictionary<string, string>();
+            textParams.Add("shopId", shopId.ToString());
+            textParams.Add("inventoryJson", JsonNewtonsoft.ToJSON(list));
+            textParams.Add("loginToken", AppConstant.loginToken);
+            String resJson = new HttpUtils().DoPost(AppConstant.saveInventoryUrl, textParams);
+            BaseResponse<Object> baseResponse = JsonNewtonsoft.FromJSON<BaseResponse<Object>>(resJson);
+            AppConstant.SynTaskInfo.InventoryTask.SynDataNumber += list.Count;
+            
         }
         public ListInventorySupplyResponse InvokeListInventorySupply()
         {
@@ -56,6 +141,16 @@ namespace skyAmazonClient.Service
             request.QueryStartDateTime = inventoryQueryStartDateTime.Value;            
             //request.ResponseGroup = responseGroup;
             return this.client.ListInventorySupply(request);
+        }
+        public ListInventorySupplyByNextTokenResponse InvokeListInventorySupplyByNextToken(string nextToken)
+        {
+            // Create a request.
+            ListInventorySupplyByNextTokenRequest request = new ListInventorySupplyByNextTokenRequest();
+            request.SellerId = sellerId;
+            request.MWSAuthToken = mwsAuthToken;
+            request.Marketplace = shopMarketplaceId;
+            request.NextToken = nextToken;
+            return this.client.ListInventorySupplyByNextToken(request);
         }
     }
 }
