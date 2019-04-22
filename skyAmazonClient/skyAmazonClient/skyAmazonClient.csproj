@@ -76,6 +76,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\AccountService.cs" />
+    <Compile Include="Service\InventoryService.cs" />
     <Compile Include="Service\OrderService.cs" />
     <Compile Include="Service\ShopService.cs" />
     <Compile Include="Service\SysConfigService.cs" />
@@ -129,6 +130,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FBAInventoryServiceMWS\FBAInventoryServiceMWS.csproj">
+      <Project>{3eccefb1-6e9a-41df-b301-cfab6702cfc6}</Project>
+      <Name>FBAInventoryServiceMWS</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MarketplaceWebServiceOrders\MarketplaceWebServiceOrders.csproj">
       <Project>{6d37ddb3-0d16-47e8-8e8c-139f8931bcdc}</Project>
       <Name>MarketplaceWebServiceOrders</Name>
