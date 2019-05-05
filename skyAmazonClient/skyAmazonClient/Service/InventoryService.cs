@@ -43,7 +43,7 @@ namespace skyAmazonClient.Service
             config.ServiceURL = serviceURL;
             client = new FBAInventoryServiceMWSClient(accessKey, secretKey, appName, appVersion, config);
             doSyn();
-            inventoryQueryStartDateTime = inventoryQueryStartDateTime.Value.AddMinutes(-5);
+            inventoryQueryStartDateTime =DateTime.Now.AddMinutes(-5);
             ShopService.updateInventoryQueryStartDateTime(shop.Id, inventoryQueryStartDateTime.Value);
         }
 
