@@ -25,8 +25,9 @@ namespace skyAmazonClient.SynTasks
                 AppConstant.SynTaskInfo.OrderTask.ExecuteTimes += 1;
                 AppConstant.SynTaskInfo.OrderTask.LastExecuteTime = DateTime.Now;
                 doSynOrder();
-                AppConstant.SynTaskInfo.OrderTask.dealInfoAppend("同步结束等待" + AppConstant.synOrderSleepTimeMinute + "分钟");
-                Thread.Sleep(TimeSpan.FromMinutes(AppConstant.synOrderSleepTimeMinute));
+                Double orderSynIntervalMinute = AppConstant.getOrderSynIntervalMinute();
+                AppConstant.SynTaskInfo.OrderTask.dealInfoAppend("同步结束等待" + orderSynIntervalMinute + "分钟");
+                Thread.Sleep(TimeSpan.FromMinutes(orderSynIntervalMinute));
             }
         }
         static void doSynOrder()

@@ -27,12 +27,8 @@ namespace skyAmazonClient
         public static string mwsAuthToken;
         public static string saveOrderUrl = ddtUrl + "/order/saveOrder";
         public static string updateOrderLastUpdatedAfterUrl = ddtUrl + "/shop/updateOrderLastUpdatedAfter";
+        public static string updateInventoryQueryStartDateTimeUrl = ddtUrl + "/shop/updateInventoryQueryStartDateTime";
         public static string saveInventoryUrl = ddtUrl + "/inventory/saveInventory";
-
-        static AppConstant()
-        {
-            //clientLoginUrl = ddtUrl + "/account/clientLogin";
-        }
 
 
         public static long sleepTime = 60 * 1000;
@@ -95,6 +91,59 @@ namespace skyAmazonClient
                     SynTaskInfo.inventoryTask = value;
                 }
             }
+        }
+
+        internal static double getSleepTimeMinute()
+        {
+            Random ran = new Random();
+            int num = ran.Next(1, 10);
+            return (Double)num;
+        }
+
+        internal static double getRequestIsThrottledSleepTimeMinute()
+        {
+            Random ran = new Random();
+            int num = ran.Next(5, 10);
+            return (Double)num;
+        }
+
+        internal static double getInventorySynIntervalMinute()
+        {
+            Random ran = new Random();
+            int max = 600;
+            int min = 30;
+            if (currentUserShop != null && currentUserShop.InventorySynIntervalMinute != null && currentUserShop.InventorySynIntervalMinute > min)
+            {
+                max = currentUserShop.InventorySynIntervalMinute.Value;
+            }
+            int num = ran.Next(min, max);
+            return (Double)num;
+        }
+
+        internal static double getOrderSynIntervalMinute()
+        {
+            Random ran = new Random();
+            int max = 60;
+            int min = 20;
+            if (currentUserShop != null && currentUserShop.OrderSynIntervalMinute != null && currentUserShop.OrderSynIntervalMinute > min)
+            {
+                max = currentUserShop.OrderSynIntervalMinute.Value;
+            }
+            int num = ran.Next(min, max);
+            return (Double)num;
+        }
+
+        internal static decimal getOrderSynQuantity()
+        {
+            Random ran = new Random();
+            int max = 50;
+            int min = 20;
+            if (currentUserShop != null && currentUserShop.OrderSynQuantity != null && currentUserShop.OrderSynQuantity > min)
+            {
+                max = currentUserShop.OrderSynQuantity.Value;
+            }
+            int num = ran.Next(min, max);
+            return num;
         }
     }
 }

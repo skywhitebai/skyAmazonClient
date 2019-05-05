@@ -26,8 +26,9 @@ namespace skyAmazonClient.SynTasks
                 AppConstant.SynTaskInfo.InventoryTask.ExecuteTimes += 1;
                 AppConstant.SynTaskInfo.InventoryTask.LastExecuteTime = DateTime.Now;
                 doSyn();
-                AppConstant.SynTaskInfo.InventoryTask.dealInfoAppend("同步结束等待" + AppConstant.synInventoryTimeHour + "小时");
-                Thread.Sleep(TimeSpan.FromHours(AppConstant.synInventoryTimeHour));
+                Double synInventoryTimeMinutes = AppConstant.getInventorySynIntervalMinute();
+                AppConstant.SynTaskInfo.InventoryTask.dealInfoAppend("同步结束等待" + synInventoryTimeMinutes + "分钟");
+                Thread.Sleep(TimeSpan.FromHours(synInventoryTimeMinutes));
             }
         }
         static void doSyn()

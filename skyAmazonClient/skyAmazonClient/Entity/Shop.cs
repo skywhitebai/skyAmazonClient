@@ -93,5 +93,28 @@ namespace skyAmazonClient.Entity
             get { return inventoryQueryStartDateTime; }
             set { inventoryQueryStartDateTime = value; }
         }
+
+        private Int32? orderSynQuantity;
+
+        public Int32? OrderSynQuantity
+        {
+            get { return orderSynQuantity; }
+            set { orderSynQuantity = value; }
+        }
+        private Int32? orderSynIntervalMinute;
+
+        public Int32? OrderSynIntervalMinute
+        {
+            get { return orderSynIntervalMinute; }
+            set { orderSynIntervalMinute = value; }
+        }
+        private Int32? inventorySynIntervalMinute;
+
+        public Int32? InventorySynIntervalMinute
+        {
+            get { return inventorySynIntervalMinute; }
+            set { inventorySynIntervalMinute = value; }
+        }
+
     }
 }

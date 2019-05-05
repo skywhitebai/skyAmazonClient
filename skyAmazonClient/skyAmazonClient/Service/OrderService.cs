@@ -18,8 +18,8 @@ namespace skyAmazonClient.Service
         string appName = "skyddt";
         string appVersion = "1.0";
         string serviceURL = "https://mws.amazonservices.com";
-        string sellerId ;
-        string mwsAuthToken ;
+        string sellerId;
+        string mwsAuthToken;
         Int32 shopId;
         DateTime? lastUpdatedAfter;
         string shopMarketplaceId;
@@ -53,7 +53,7 @@ namespace skyAmazonClient.Service
             }
             if (String.IsNullOrEmpty(listOrdersResponse.ListOrdersResult.NextToken))
             {
-                return ;
+                return;
             }
             ListOrdersByNextTokenResponse listOrdersByNextTokenResponse = getListOrdersByNextToken(listOrdersResponse.ListOrdersResult.NextToken);
             if (listOrdersByNextTokenResponse == null)
@@ -75,22 +75,23 @@ namespace skyAmazonClient.Service
                 {
                     return;
                 }
-            } 
+            }
         }
 
         private ListOrdersByNextTokenResponse getListOrdersByNextToken(string nextToken)
         {
             try
             {
-                return InvokeListOrdersByNextToken(nextToken);;
+                return InvokeListOrdersByNextToken(nextToken); ;
             }
             catch (Exception ex)
             {
                 if (ex.Message == "Request is throttled")
                 {
-                    String dealInfo = "getListOrdersByNextToken Request is throttled: Sleep " + AppConstant.orderSleepTimeMinute + "minute";
-                     AppConstant.SynTaskInfo.OrderTask.dealInfoAppend(dealInfo);
-                    Thread.Sleep(TimeSpan.FromMinutes(AppConstant.orderSleepTimeMinute));
+                    Double requestIsThrottledSleepTimeMinute = AppConstant.getRequestIsThrottledSleepTimeMinute();
+                    String dealInfo = "getListOrdersByNextToken Request is throttled: Sleep " + requestIsThrottledSleepTimeMinute + "minute";
+                    AppConstant.SynTaskInfo.OrderTask.dealInfoAppend(dealInfo);
+                    Thread.Sleep(TimeSpan.FromMinutes(requestIsThrottledSleepTimeMinute));
                     return getListOrdersByNextToken(nextToken);
                 }
                 else
@@ -111,28 +112,29 @@ namespace skyAmazonClient.Service
             {
                 if (ex.Message == "Request is throttled")
                 {
-                    String dealInfo = "getListOrders Request is throttled: Sleep " + AppConstant.orderSleepTimeMinute + "minute";
-                     AppConstant.SynTaskInfo.OrderTask.dealInfoAppend(dealInfo);
-                    Thread.Sleep(TimeSpan.FromMinutes(AppConstant.orderSleepTimeMinute));
+                    Double requestIsThrottledSleepTimeMinute = AppConstant.getRequestIsThrottledSleepTimeMinute();
+                    String dealInfo = "getListOrders Request is throttled: Sleep " + requestIsThrottledSleepTimeMinute + "minute";
+                    AppConstant.SynTaskInfo.OrderTask.dealInfoAppend(dealInfo);
+                    Thread.Sleep(TimeSpan.FromMinutes(requestIsThrottledSleepTimeMinute));
                     return getListOrders();
                 }
                 else
                 {
-                    AppConstant.SynTaskInfo.OrderTask.dealInfoAppend("异常:"+ex.Message);
+                    AppConstant.SynTaskInfo.OrderTask.dealInfoAppend("异常:" + ex.Message);
                     return null;
                 }
             }
         }
-        private void dealOrder(int shopId,Order order)
+        private void dealOrder(int shopId, Order order)
         {
-            String dealInfo ="dealOrder AmazonOrderId: " + order.AmazonOrderId;
-             AppConstant.SynTaskInfo.OrderTask.dealInfoAppend(dealInfo);
+            String dealInfo = "dealOrder AmazonOrderId: " + order.AmazonOrderId;
+            AppConstant.SynTaskInfo.OrderTask.dealInfoAppend(dealInfo);
             List<OrderItem> orderItems = getOrderItems(order.AmazonOrderId);
             String orderItemsJson = JsonNewtonsoft.ToJSON(orderItems);
             String orderJson = JsonNewtonsoft.ToJSON(order);
             saveOrder(shopId, orderJson, orderItemsJson);
             ShopService.updateLastUpdatedAfter(shopId, order.LastUpdateDate);
-            AppConstant.SynTaskInfo.OrderTask.SynDataNumber+= 1;
+            AppConstant.SynTaskInfo.OrderTask.SynDataNumber += 1;
             lastUpdatedAfter = order.LastUpdateDate;
         }
         private void saveOrder(int shopId, string orderJson, string orderItemsJson)
@@ -180,7 +182,7 @@ namespace skyAmazonClient.Service
                 if (listOrderItemsByNextTokenResponse == null)
                 {
                     return null;
-                } 
+                }
             }
         }
 
@@ -195,7 +197,7 @@ namespace skyAmazonClient.Service
                 if (ex.Message == "Request is throttled")
                 {
                     String dealInfo = "getListOrderItemsByNextToken Request is throttled: Sleep " + AppConstant.orderItemSleepTimeSecond + "second";
-                     AppConstant.SynTaskInfo.OrderTask.dealInfoAppend(dealInfo);
+                    AppConstant.SynTaskInfo.OrderTask.dealInfoAppend(dealInfo);
                     Thread.Sleep(TimeSpan.FromSeconds(AppConstant.orderItemSleepTimeSecond));
                     return getListOrderItemsByNextToken(nextToken);
                 }
@@ -218,7 +220,7 @@ namespace skyAmazonClient.Service
                 if (ex.Message == "Request is throttled")
                 {
                     String dealInfo = "getListOrderItems Request is throttled: Sleep " + AppConstant.orderItemSleepTimeSecond + "second";
-                     AppConstant.SynTaskInfo.OrderTask.dealInfoAppend(dealInfo);
+                    AppConstant.SynTaskInfo.OrderTask.dealInfoAppend(dealInfo);
                     Thread.Sleep(TimeSpan.FromSeconds(AppConstant.orderItemSleepTimeSecond));
                     return getListOrderItems(amazonOrderId);
                 }
@@ -229,16 +231,6 @@ namespace skyAmazonClient.Service
                 }
             }
         }
-        private GetOrderResponse InvokeGetOrder()
-        {
-            // Create a request.
-            GetOrderRequest request = new GetOrderRequest();
-            request.SellerId = sellerId;
-            request.MWSAuthToken = mwsAuthToken;
-            List<string> amazonOrderId = new List<string>();
-            request.AmazonOrderId = amazonOrderId;
-            return this.client.GetOrder(request);
-        }
         private ListOrdersResponse InvokeListOrders()
         {
             // Create a request.
@@ -247,6 +239,8 @@ namespace skyAmazonClient.Service
             request.MWSAuthToken = mwsAuthToken;
             request.LastUpdatedAfter = lastUpdatedAfter.Value;
             List<string> orderStatus = new List<string>();
+            orderStatus.Add("Shipped");
+            orderStatus.Add("Pending");
             request.OrderStatus = orderStatus;
             List<string> marketplaceId = new List<string>();
             marketplaceId.Add(shopMarketplaceId);
@@ -255,7 +249,7 @@ namespace skyAmazonClient.Service
             request.FulfillmentChannel = fulfillmentChannel;
             List<string> paymentMethod = new List<string>();
             request.PaymentMethod = paymentMethod;
-            decimal maxResultsPerPage = 30;//订单商品30个请求数量，所以这里设置30个
+            decimal maxResultsPerPage = AppConstant.getOrderSynQuantity();//订单商品30个请求数量，所以这里设置30个
             request.MaxResultsPerPage = maxResultsPerPage;
             List<string> tfmShipmentStatus = new List<string>();
             request.TFMShipmentStatus = tfmShipmentStatus;

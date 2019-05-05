@@ -30,6 +30,7 @@ namespace skyAmazonClient.Service
             {
                 shop.InventoryQueryStartDateTime = AppConstant.inventoryQueryStartDateTime;
             }
+
             if (inventoryQueryStartDateTime == null)
             {
                 this.inventoryQueryStartDateTime = shop.InventoryQueryStartDateTime.Value;
@@ -41,6 +42,13 @@ namespace skyAmazonClient.Service
             FBAInventoryServiceMWSConfig config = new FBAInventoryServiceMWSConfig();
             config.ServiceURL = serviceURL;
             client = new FBAInventoryServiceMWSClient(accessKey, secretKey, appName, appVersion, config);
+            doSyn();
+            inventoryQueryStartDateTime = inventoryQueryStartDateTime.Value.AddMinutes(-5);
+            ShopService.updateInventoryQueryStartDateTime(shop.Id, inventoryQueryStartDateTime.Value);
+        }
+
+        private void doSyn()
+        {
             ListInventorySupplyResponse listInventorySupplyResponse = getListInventorySupply();
             if (listInventorySupplyResponse == null)
             {
@@ -81,9 +89,10 @@ namespace skyAmazonClient.Service
             {
                 if (ex.Message == "Request is throttled")
                 {
-                    String dealInfo = "getListInventorySupply Request is throttled: Sleep " + AppConstant.orderSleepTimeMinute + "minute";
+                    Double requestIsThrottledSleepTimeMinute = AppConstant.getRequestIsThrottledSleepTimeMinute();
+                    String dealInfo = "getListInventorySupply Request is throttled: Sleep " + requestIsThrottledSleepTimeMinute + "minute";
                     AppConstant.SynTaskInfo.InventoryTask.dealInfoAppend(dealInfo);
-                    Thread.Sleep(TimeSpan.FromMinutes(AppConstant.orderSleepTimeMinute));
+                    Thread.Sleep(TimeSpan.FromMinutes(requestIsThrottledSleepTimeMinute));
                     return getListInventorySupply();
                 }
                 else
@@ -104,9 +113,10 @@ namespace skyAmazonClient.Service
             {
                 if (ex.Message == "Request is throttled")
                 {
-                    String dealInfo = "getListInventorySupplyByNextToken Request is throttled: Sleep " + AppConstant.orderSleepTimeMinute + "minute";
+                    Double requestIsThrottledSleepTimeMinute = AppConstant.getRequestIsThrottledSleepTimeMinute();
+                    String dealInfo = "getListInventorySupplyByNextToken Request is throttled: Sleep " + requestIsThrottledSleepTimeMinute + "minute";
                     AppConstant.SynTaskInfo.InventoryTask.dealInfoAppend(dealInfo);
-                    Thread.Sleep(TimeSpan.FromMinutes(AppConstant.orderSleepTimeMinute));
+                    Thread.Sleep(TimeSpan.FromMinutes(requestIsThrottledSleepTimeMinute));
                     return getListInventorySupplyByNextToken(nextToken);
                 }
                 else
