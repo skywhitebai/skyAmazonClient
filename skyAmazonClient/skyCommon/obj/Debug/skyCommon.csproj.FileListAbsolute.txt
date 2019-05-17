@@ -9,3 +9,4 @@ F:\code\github\skyAmazonClient\skyAmazonClient\skyCommon\bin\Debug\Newtonsoft.Js
 F:\code\github\skyAmazonClient\skyAmazonClient\skyCommon\obj\Debug\skyCommon.csprojResolveAssemblyReference.cache
 F:\code\github\skyAmazonClient\skyAmazonClient\skyCommon\obj\Debug\skyCommon.dll
 F:\code\github\skyAmazonClient\skyAmazonClient\skyCommon\obj\Debug\skyCommon.pdb
+D:\src\amazonform\skyAmazonClient\skyAmazonClient\skyCommon\obj\Debug\skyCommon.csprojResolveAssemblyReference.cache

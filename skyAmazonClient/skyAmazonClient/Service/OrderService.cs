@@ -237,24 +237,27 @@ namespace skyAmazonClient.Service
             ListOrdersRequest request = new ListOrdersRequest();
             request.SellerId = sellerId;
             request.MWSAuthToken = mwsAuthToken;
+            //request.CreatedAfter = AppConstant.lastUpdatedAfter.Value;
             request.LastUpdatedAfter = lastUpdatedAfter.Value;
-            List<string> orderStatus = new List<string>();
-            orderStatus.Add("Shipped");
-            orderStatus.Add("Pending");
-            request.OrderStatus = orderStatus;
+            //request.BuyerEmail = "rfm16xchs4qjf0r@marketplace.amazon.com";
+            //request.SellerOrderId = "111-8517710-2175410";
+            //List<string> orderStatus = new List<string>();
+            //orderStatus.Add("Shipped");
+            //orderStatus.Add("Pending");
+            //request.OrderStatus = orderStatus;
             List<string> marketplaceId = new List<string>();
             marketplaceId.Add(shopMarketplaceId);
             request.MarketplaceId = marketplaceId;
             List<string> fulfillmentChannel = new List<string>();
-            request.FulfillmentChannel = fulfillmentChannel;
+            //request.FulfillmentChannel = fulfillmentChannel;
             List<string> paymentMethod = new List<string>();
-            request.PaymentMethod = paymentMethod;
+            //request.PaymentMethod = paymentMethod;
             decimal maxResultsPerPage = AppConstant.getOrderSynQuantity();//订单商品30个请求数量，所以这里设置30个
             request.MaxResultsPerPage = maxResultsPerPage;
             List<string> tfmShipmentStatus = new List<string>();
-            request.TFMShipmentStatus = tfmShipmentStatus;
+            //request.TFMShipmentStatus = tfmShipmentStatus;
             List<string> easyShipShipmentStatus = new List<string>();
-            request.EasyShipShipmentStatus = easyShipShipmentStatus;
+            //request.EasyShipShipmentStatus = easyShipShipmentStatus;
             return this.client.ListOrders(request);
         }
 
