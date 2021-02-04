@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2009-2018 Amazon Services. All Rights Reserved.
+ * Copyright 2009-2021 Amazon Services. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  *
  * You may not use this file except in compliance with the License. 
@@ -10,8 +10,8 @@
  *******************************************************************************
  * Order
  * API Version: 2013-09-01
- * Library Version: 2018-10-31
- * Generated: Mon Oct 22 22:40:35 UTC 2018
+ * Library Version: 2021-01-06
+ * Generated: Wed Jan 06 18:02:49 UTC 2021
  */
 
 
@@ -35,6 +35,7 @@ namespace MarketplaceWebServiceOrders.Model
         private string _orderChannel;
         private string _shipServiceLevel;
         private Address _shippingAddress;
+        private Address _defaultShipFromLocationAddress;
         private Money _orderTotal;
         private decimal? _numberOfItemsShipped;
         private decimal? _numberOfItemsUnshipped;
@@ -59,11 +60,18 @@ namespace MarketplaceWebServiceOrders.Model
         private bool? _isBusinessOrder;
         private string _purchaseOrderNumber;
         private bool? _isPrime;
+        private bool? _isGlobalExpressEnabled;
         private bool? _isPremiumOrder;
         private string _replacedOrderId;
         private bool? _isReplacementOrder;
         private DateTime? _promiseResponseDueDate;
         private bool? _isEstimatedShipDateSet;
+        private List<TaxRegistrationDetails> _taxRegistrationDetails;
+        private bool? _isSoldByAB;
+        private BuyerIdentificationInformation _buyerIdentificationInformation;
+        private FulfillmentInstruction _fulfillmentInstruction;
+        private FulfillmentExecution _fulfillmentExecution;
+        private bool? _isISPU;
 
         /// <summary>
         /// Gets and sets the AmazonOrderId property.
@@ -353,6 +361,35 @@ namespace MarketplaceWebServiceOrders.Model
         public bool IsSetShippingAddress()
         {
             return this._shippingAddress != null;
+        }
+
+        /// <summary>
+        /// Gets and sets the DefaultShipFromLocationAddress property.
+        /// </summary>
+        public Address DefaultShipFromLocationAddress
+        {
+            get { return this._defaultShipFromLocationAddress; }
+            set { this._defaultShipFromLocationAddress = value; }
+        }
+
+        /// <summary>
+        /// Sets the DefaultShipFromLocationAddress property.
+        /// </summary>
+        /// <param name="defaultShipFromLocationAddress">DefaultShipFromLocationAddress property.</param>
+        /// <returns>this instance.</returns>
+        public Order WithDefaultShipFromLocationAddress(Address defaultShipFromLocationAddress)
+        {
+            this._defaultShipFromLocationAddress = defaultShipFromLocationAddress;
+            return this;
+        }
+
+        /// <summary>
+        /// Checks if DefaultShipFromLocationAddress property is set.
+        /// </summary>
+        /// <returns>true if DefaultShipFromLocationAddress property is set.</returns>
+        public bool IsSetDefaultShipFromLocationAddress()
+        {
+            return this._defaultShipFromLocationAddress != null;
         }
 
         /// <summary>
@@ -1066,6 +1103,35 @@ namespace MarketplaceWebServiceOrders.Model
         }
 
         /// <summary>
+        /// Gets and sets the IsGlobalExpressEnabled property.
+        /// </summary>
+        public bool IsGlobalExpressEnabled
+        {
+            get { return this._isGlobalExpressEnabled.GetValueOrDefault(); }
+            set { this._isGlobalExpressEnabled = value; }
+        }
+
+        /// <summary>
+        /// Sets the IsGlobalExpressEnabled property.
+        /// </summary>
+        /// <param name="isGlobalExpressEnabled">IsGlobalExpressEnabled property.</param>
+        /// <returns>this instance.</returns>
+        public Order WithIsGlobalExpressEnabled(bool isGlobalExpressEnabled)
+        {
+            this._isGlobalExpressEnabled = isGlobalExpressEnabled;
+            return this;
+        }
+
+        /// <summary>
+        /// Checks if IsGlobalExpressEnabled property is set.
+        /// </summary>
+        /// <returns>true if IsGlobalExpressEnabled property is set.</returns>
+        public bool IsSetIsGlobalExpressEnabled()
+        {
+            return this._isGlobalExpressEnabled != null;
+        }
+
+        /// <summary>
         /// Gets and sets the IsPremiumOrder property.
         /// </summary>
         public bool IsPremiumOrder
@@ -1210,6 +1276,187 @@ namespace MarketplaceWebServiceOrders.Model
             return this._isEstimatedShipDateSet != null;
         }
 
+        /// <summary>
+        /// Gets and sets the TaxRegistrationDetails property.
+        /// </summary>
+        public List<TaxRegistrationDetails> TaxRegistrationDetails
+        {
+            get
+            {
+                if(this._taxRegistrationDetails == null)
+                {
+                    this._taxRegistrationDetails = new List<TaxRegistrationDetails>();
+                }
+                return this._taxRegistrationDetails;
+            }
+            set { this._taxRegistrationDetails = value; }
+        }
+
+        /// <summary>
+        /// Sets the TaxRegistrationDetails property.
+        /// </summary>
+        /// <param name="taxRegistrationDetails">TaxRegistrationDetails property.</param>
+        /// <returns>this instance.</returns>
+        public Order WithTaxRegistrationDetails(TaxRegistrationDetails[] taxRegistrationDetails)
+        {
+            this._taxRegistrationDetails.AddRange(taxRegistrationDetails);
+            return this;
+        }
+
+        /// <summary>
+        /// Checks if TaxRegistrationDetails property is set.
+        /// </summary>
+        /// <returns>true if TaxRegistrationDetails property is set.</returns>
+        public bool IsSetTaxRegistrationDetails()
+        {
+            return this.TaxRegistrationDetails.Count > 0;
+        }
+
+        /// <summary>
+        /// Gets and sets the IsSoldByAB property.
+        /// </summary>
+        public bool IsSoldByAB
+        {
+            get { return this._isSoldByAB.GetValueOrDefault(); }
+            set { this._isSoldByAB = value; }
+        }
+
+        /// <summary>
+        /// Sets the IsSoldByAB property.
+        /// </summary>
+        /// <param name="isSoldByAB">IsSoldByAB property.</param>
+        /// <returns>this instance.</returns>
+        public Order WithIsSoldByAB(bool isSoldByAB)
+        {
+            this._isSoldByAB = isSoldByAB;
+            return this;
+        }
+
+        /// <summary>
+        /// Checks if IsSoldByAB property is set.
+        /// </summary>
+        /// <returns>true if IsSoldByAB property is set.</returns>
+        public bool IsSetIsSoldByAB()
+        {
+            return this._isSoldByAB != null;
+        }
+
+        /// <summary>
+        /// Gets and sets the BuyerIdentificationInformation property.
+        /// </summary>
+        public BuyerIdentificationInformation BuyerIdentificationInformation
+        {
+            get { return this._buyerIdentificationInformation; }
+            set { this._buyerIdentificationInformation = value; }
+        }
+
+        /// <summary>
+        /// Sets the BuyerIdentificationInformation property.
+        /// </summary>
+        /// <param name="buyerIdentificationInformation">BuyerIdentificationInformation property.</param>
+        /// <returns>this instance.</returns>
+        public Order WithBuyerIdentificationInformation(BuyerIdentificationInformation buyerIdentificationInformation)
+        {
+            this._buyerIdentificationInformation = buyerIdentificationInformation;
+            return this;
+        }
+
+        /// <summary>
+        /// Checks if BuyerIdentificationInformation property is set.
+        /// </summary>
+        /// <returns>true if BuyerIdentificationInformation property is set.</returns>
+        public bool IsSetBuyerIdentificationInformation()
+        {
+            return this._buyerIdentificationInformation != null;
+        }
+
+        /// <summary>
+        /// Gets and sets the FulfillmentInstruction property.
+        /// </summary>
+        public FulfillmentInstruction FulfillmentInstruction
+        {
+            get { return this._fulfillmentInstruction; }
+            set { this._fulfillmentInstruction = value; }
+        }
+
+        /// <summary>
+        /// Sets the FulfillmentInstruction property.
+        /// </summary>
+        /// <param name="fulfillmentInstruction">FulfillmentInstruction property.</param>
+        /// <returns>this instance.</returns>
+        public Order WithFulfillmentInstruction(FulfillmentInstruction fulfillmentInstruction)
+        {
+            this._fulfillmentInstruction = fulfillmentInstruction;
+            return this;
+        }
+
+        /// <summary>
+        /// Checks if FulfillmentInstruction property is set.
+        /// </summary>
+        /// <returns>true if FulfillmentInstruction property is set.</returns>
+        public bool IsSetFulfillmentInstruction()
+        {
+            return this._fulfillmentInstruction != null;
+        }
+
+        /// <summary>
+        /// Gets and sets the FulfillmentExecution property.
+        /// </summary>
+        public FulfillmentExecution FulfillmentExecution
+        {
+            get { return this._fulfillmentExecution; }
+            set { this._fulfillmentExecution = value; }
+        }
+
+        /// <summary>
+        /// Sets the FulfillmentExecution property.
+        /// </summary>
+        /// <param name="fulfillmentExecution">FulfillmentExecution property.</param>
+        /// <returns>this instance.</returns>
+        public Order WithFulfillmentExecution(FulfillmentExecution fulfillmentExecution)
+        {
+            this._fulfillmentExecution = fulfillmentExecution;
+            return this;
+        }
+
+        /// <summary>
+        /// Checks if FulfillmentExecution property is set.
+        /// </summary>
+        /// <returns>true if FulfillmentExecution property is set.</returns>
+        public bool IsSetFulfillmentExecution()
+        {
+            return this._fulfillmentExecution != null;
+        }
+
+        /// <summary>
+        /// Gets and sets the IsISPU property.
+        /// </summary>
+        public bool IsISPU
+        {
+            get { return this._isISPU.GetValueOrDefault(); }
+            set { this._isISPU = value; }
+        }
+
+        /// <summary>
+        /// Sets the IsISPU property.
+        /// </summary>
+        /// <param name="isISPU">IsISPU property.</param>
+        /// <returns>this instance.</returns>
+        public Order WithIsISPU(bool isISPU)
+        {
+            this._isISPU = isISPU;
+            return this;
+        }
+
+        /// <summary>
+        /// Checks if IsISPU property is set.
+        /// </summary>
+        /// <returns>true if IsISPU property is set.</returns>
+        public bool IsSetIsISPU()
+        {
+            return this._isISPU != null;
+        }
+
 
         public override void ReadFragmentFrom(IMwsReader reader)
         {
@@ -1223,6 +1470,7 @@ namespace MarketplaceWebServiceOrders.Model
             _orderChannel = reader.Read<string>("OrderChannel");
             _shipServiceLevel = reader.Read<string>("ShipServiceLevel");
             _shippingAddress = reader.Read<Address>("ShippingAddress");
+            _defaultShipFromLocationAddress = reader.Read<Address>("DefaultShipFromLocationAddress");
             _orderTotal = reader.Read<Money>("OrderTotal");
             _numberOfItemsShipped = reader.Read<decimal?>("NumberOfItemsShipped");
             _numberOfItemsUnshipped = reader.Read<decimal?>("NumberOfItemsUnshipped");
@@ -1247,11 +1495,18 @@ namespace MarketplaceWebServiceOrders.Model
             _isBusinessOrder = reader.Read<bool?>("IsBusinessOrder");
             _purchaseOrderNumber = reader.Read<string>("PurchaseOrderNumber");
             _isPrime = reader.Read<bool?>("IsPrime");
+            _isGlobalExpressEnabled = reader.Read<bool?>("IsGlobalExpressEnabled");
             _isPremiumOrder = reader.Read<bool?>("IsPremiumOrder");
             _replacedOrderId = reader.Read<string>("ReplacedOrderId");
             _isReplacementOrder = reader.Read<bool?>("IsReplacementOrder");
             _promiseResponseDueDate = reader.Read<DateTime?>("PromiseResponseDueDate");
             _isEstimatedShipDateSet = reader.Read<bool?>("IsEstimatedShipDateSet");
+            _taxRegistrationDetails = reader.ReadList<TaxRegistrationDetails>("TaxRegistrationDetails", "member");
+            _isSoldByAB = reader.Read<bool?>("IsSoldByAB");
+            _buyerIdentificationInformation = reader.Read<BuyerIdentificationInformation>("BuyerIdentificationInformation");
+            _fulfillmentInstruction = reader.Read<FulfillmentInstruction>("FulfillmentInstruction");
+            _fulfillmentExecution = reader.Read<FulfillmentExecution>("FulfillmentExecution");
+            _isISPU = reader.Read<bool?>("IsISPU");
         }
 
         public override void WriteFragmentTo(IMwsWriter writer)
@@ -1266,6 +1521,7 @@ namespace MarketplaceWebServiceOrders.Model
             writer.Write("OrderChannel", _orderChannel);
             writer.Write("ShipServiceLevel", _shipServiceLevel);
             writer.Write("ShippingAddress", _shippingAddress);
+            writer.Write("DefaultShipFromLocationAddress", _defaultShipFromLocationAddress);
             writer.Write("OrderTotal", _orderTotal);
             writer.Write("NumberOfItemsShipped", _numberOfItemsShipped);
             writer.Write("NumberOfItemsUnshipped", _numberOfItemsUnshipped);
@@ -1290,11 +1546,18 @@ namespace MarketplaceWebServiceOrders.Model
             writer.Write("IsBusinessOrder", _isBusinessOrder);
             writer.Write("PurchaseOrderNumber", _purchaseOrderNumber);
             writer.Write("IsPrime", _isPrime);
+            writer.Write("IsGlobalExpressEnabled", _isGlobalExpressEnabled);
             writer.Write("IsPremiumOrder", _isPremiumOrder);
             writer.Write("ReplacedOrderId", _replacedOrderId);
             writer.Write("IsReplacementOrder", _isReplacementOrder);
             writer.Write("PromiseResponseDueDate", _promiseResponseDueDate);
             writer.Write("IsEstimatedShipDateSet", _isEstimatedShipDateSet);
+            writer.WriteList("TaxRegistrationDetails", "member", _taxRegistrationDetails);
+            writer.Write("IsSoldByAB", _isSoldByAB);
+            writer.Write("BuyerIdentificationInformation", _buyerIdentificationInformation);
+            writer.Write("FulfillmentInstruction", _fulfillmentInstruction);
+            writer.Write("FulfillmentExecution", _fulfillmentExecution);
+            writer.Write("IsISPU", _isISPU);
         }
 
         public override void WriteTo(IMwsWriter writer)

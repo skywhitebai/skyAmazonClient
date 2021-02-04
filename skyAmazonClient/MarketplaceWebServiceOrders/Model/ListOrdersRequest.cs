@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2009-2018 Amazon Services. All Rights Reserved.
+ * Copyright 2009-2021 Amazon Services. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  *
  * You may not use this file except in compliance with the License. 
@@ -10,8 +10,8 @@
  *******************************************************************************
  * List Orders Request
  * API Version: 2013-09-01
- * Library Version: 2018-10-31
- * Generated: Mon Oct 22 22:40:35 UTC 2018
+ * Library Version: 2021-01-06
+ * Generated: Wed Jan 06 18:02:49 UTC 2021
  */
 
 
@@ -40,6 +40,9 @@ namespace MarketplaceWebServiceOrders.Model
         private decimal? _maxResultsPerPage;
         private List<string> _tfmShipmentStatus;
         private List<string> _easyShipShipmentStatus;
+        private string _actualFulfillmentSupplySourceId;
+        private bool? _isISPU;
+        private ListOrdersOrderItem _item;
 
         /// <summary>
         /// Gets and sets the SellerId property.
@@ -518,6 +521,93 @@ namespace MarketplaceWebServiceOrders.Model
             return this.EasyShipShipmentStatus.Count > 0;
         }
 
+        /// <summary>
+        /// Gets and sets the ActualFulfillmentSupplySourceId property.
+        /// </summary>
+        public string ActualFulfillmentSupplySourceId
+        {
+            get { return this._actualFulfillmentSupplySourceId; }
+            set { this._actualFulfillmentSupplySourceId = value; }
+        }
+
+        /// <summary>
+        /// Sets the ActualFulfillmentSupplySourceId property.
+        /// </summary>
+        /// <param name="actualFulfillmentSupplySourceId">ActualFulfillmentSupplySourceId property.</param>
+        /// <returns>this instance.</returns>
+        public ListOrdersRequest WithActualFulfillmentSupplySourceId(string actualFulfillmentSupplySourceId)
+        {
+            this._actualFulfillmentSupplySourceId = actualFulfillmentSupplySourceId;
+            return this;
+        }
+
+        /// <summary>
+        /// Checks if ActualFulfillmentSupplySourceId property is set.
+        /// </summary>
+        /// <returns>true if ActualFulfillmentSupplySourceId property is set.</returns>
+        public bool IsSetActualFulfillmentSupplySourceId()
+        {
+            return this._actualFulfillmentSupplySourceId != null;
+        }
+
+        /// <summary>
+        /// Gets and sets the IsISPU property.
+        /// </summary>
+        public bool IsISPU
+        {
+            get { return this._isISPU.GetValueOrDefault(); }
+            set { this._isISPU = value; }
+        }
+
+        /// <summary>
+        /// Sets the IsISPU property.
+        /// </summary>
+        /// <param name="isISPU">IsISPU property.</param>
+        /// <returns>this instance.</returns>
+        public ListOrdersRequest WithIsISPU(bool isISPU)
+        {
+            this._isISPU = isISPU;
+            return this;
+        }
+
+        /// <summary>
+        /// Checks if IsISPU property is set.
+        /// </summary>
+        /// <returns>true if IsISPU property is set.</returns>
+        public bool IsSetIsISPU()
+        {
+            return this._isISPU != null;
+        }
+
+        /// <summary>
+        /// Gets and sets the Item property.
+        /// </summary>
+        public ListOrdersOrderItem Item
+        {
+            get { return this._item; }
+            set { this._item = value; }
+        }
+
+        /// <summary>
+        /// Sets the Item property.
+        /// </summary>
+        /// <param name="item">Item property.</param>
+        /// <returns>this instance.</returns>
+        public ListOrdersRequest WithItem(ListOrdersOrderItem item)
+        {
+            this._item = item;
+            return this;
+        }
+
+        /// <summary>
+        /// Checks if Item property is set.
+        /// </summary>
+        /// <returns>true if Item property is set.</returns>
+        public bool IsSetItem()
+        {
+            return this._item != null;
+        }
+
 
         public override void ReadFragmentFrom(IMwsReader reader)
         {
@@ -536,6 +626,9 @@ namespace MarketplaceWebServiceOrders.Model
             _maxResultsPerPage = reader.Read<decimal?>("MaxResultsPerPage");
             _tfmShipmentStatus = reader.ReadList<string>("TFMShipmentStatus", "Status");
             _easyShipShipmentStatus = reader.ReadList<string>("EasyShipShipmentStatus", "Status");
+            _actualFulfillmentSupplySourceId = reader.Read<string>("ActualFulfillmentSupplySourceId");
+            _isISPU = reader.Read<bool?>("IsISPU");
+            _item = reader.Read<ListOrdersOrderItem>("Item");
         }
 
         public override void WriteFragmentTo(IMwsWriter writer)
@@ -555,6 +648,9 @@ namespace MarketplaceWebServiceOrders.Model
             writer.Write("MaxResultsPerPage", _maxResultsPerPage);
             writer.WriteList("TFMShipmentStatus", "Status", _tfmShipmentStatus);
             writer.WriteList("EasyShipShipmentStatus", "Status", _easyShipShipmentStatus);
+            writer.Write("ActualFulfillmentSupplySourceId", _actualFulfillmentSupplySourceId);
+            writer.Write("IsISPU", _isISPU);
+            writer.Write("Item", _item);
         }
 
         public override void WriteTo(IMwsWriter writer)

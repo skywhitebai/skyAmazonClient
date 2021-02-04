@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2009-2018 Amazon Services. All Rights Reserved.
+ * Copyright 2009-2021 Amazon Services. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  *
  * You may not use this file except in compliance with the License. 
@@ -10,8 +10,8 @@
  *******************************************************************************
  * Address
  * API Version: 2013-09-01
- * Library Version: 2018-10-31
- * Generated: Mon Oct 22 22:40:35 UTC 2018
+ * Library Version: 2021-01-06
+ * Generated: Wed Jan 06 18:02:49 UTC 2021
  */
 
 
@@ -37,6 +37,7 @@ namespace MarketplaceWebServiceOrders.Model
         private string _countryCode;
         private string _phone;
         private string _addressType;
+        private bool? _isAddressSharingConfidential;
 
         /// <summary>
         /// Gets and sets the Name property.
@@ -415,6 +416,35 @@ namespace MarketplaceWebServiceOrders.Model
             return this._addressType != null;
         }
 
+        /// <summary>
+        /// Gets and sets the IsAddressSharingConfidential property.
+        /// </summary>
+        public bool IsAddressSharingConfidential
+        {
+            get { return this._isAddressSharingConfidential.GetValueOrDefault(); }
+            set { this._isAddressSharingConfidential = value; }
+        }
+
+        /// <summary>
+        /// Sets the IsAddressSharingConfidential property.
+        /// </summary>
+        /// <param name="isAddressSharingConfidential">IsAddressSharingConfidential property.</param>
+        /// <returns>this instance.</returns>
+        public Address WithIsAddressSharingConfidential(bool isAddressSharingConfidential)
+        {
+            this._isAddressSharingConfidential = isAddressSharingConfidential;
+            return this;
+        }
+
+        /// <summary>
+        /// Checks if IsAddressSharingConfidential property is set.
+        /// </summary>
+        /// <returns>true if IsAddressSharingConfidential property is set.</returns>
+        public bool IsSetIsAddressSharingConfidential()
+        {
+            return this._isAddressSharingConfidential != null;
+        }
+
 
         public override void ReadFragmentFrom(IMwsReader reader)
         {
@@ -431,6 +461,7 @@ namespace MarketplaceWebServiceOrders.Model
             _countryCode = reader.Read<string>("CountryCode");
             _phone = reader.Read<string>("Phone");
             _addressType = reader.Read<string>("AddressType");
+            _isAddressSharingConfidential = reader.Read<bool?>("isAddressSharingConfidential");
         }
 
         public override void WriteFragmentTo(IMwsWriter writer)
@@ -448,6 +479,7 @@ namespace MarketplaceWebServiceOrders.Model
             writer.Write("CountryCode", _countryCode);
             writer.Write("Phone", _phone);
             writer.Write("AddressType", _addressType);
+            writer.Write("isAddressSharingConfidential", _isAddressSharingConfidential);
         }
 
         public override void WriteTo(IMwsWriter writer)

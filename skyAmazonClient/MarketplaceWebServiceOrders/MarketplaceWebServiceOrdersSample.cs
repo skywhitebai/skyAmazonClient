@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2009-2018 Amazon Services. All Rights Reserved.
+ * Copyright 2009-2021 Amazon Services. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  *
  * You may not use this file except in compliance with the License. 
@@ -10,8 +10,8 @@
  *******************************************************************************
  * Marketplace Web Service Orders
  * API Version: 2013-09-01
- * Library Version: 2018-10-31
- * Generated: Mon Oct 22 22:40:35 UTC 2018
+ * Library Version: 2021-01-06
+ * Generated: Wed Jan 06 18:02:49 UTC 2021
  */
 
 using MarketplaceWebServiceOrders.Model;
@@ -187,6 +187,12 @@ namespace MarketplaceWebServiceOrders {
             request.TFMShipmentStatus = tfmShipmentStatus;
             List<string> easyShipShipmentStatus = new List<string>();
             request.EasyShipShipmentStatus = easyShipShipmentStatus;
+            string actualFulfillmentSupplySourceId = "example";
+            request.ActualFulfillmentSupplySourceId = actualFulfillmentSupplySourceId;
+            bool isISPU = true;
+            request.IsISPU = isISPU;
+            ListOrdersOrderItem item = new ListOrdersOrderItem();
+            request.Item = item;
             return this.client.ListOrders(request);
         }
 

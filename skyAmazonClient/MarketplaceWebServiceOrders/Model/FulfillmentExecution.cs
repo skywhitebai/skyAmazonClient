@@ -8,7 +8,7 @@
  * CONDITIONS OF ANY KIND, either express or implied. See the License for the 
  * specific language governing permissions and limitations under the License.
  *******************************************************************************
- * Get Order Result
+ * Fulfillment Execution
  * API Version: 2013-09-01
  * Library Version: 2021-01-06
  * Generated: Wed Jan 06 18:02:49 UTC 2021
@@ -17,73 +17,62 @@
 
 using System;
 using System.Xml;
-using System.Collections.Generic;
 using MWSClientCsRuntime;
 
 namespace MarketplaceWebServiceOrders.Model
 {
-    public class GetOrderResult : AbstractMwsObject
+    public class FulfillmentExecution : AbstractMwsObject
     {
 
-        private List<Order> _orders;
+        private string _fulfillmentSupplySourceId;
 
         /// <summary>
-        /// Gets and sets the Orders property.
+        /// Gets and sets the FulfillmentSupplySourceId property.
         /// </summary>
-        public List<Order> Orders
+        public string FulfillmentSupplySourceId
         {
-            get
-            {
-                if(this._orders == null)
-                {
-                    this._orders = new List<Order>();
-                }
-                return this._orders;
-            }
-            set { this._orders = value; }
+            get { return this._fulfillmentSupplySourceId; }
+            set { this._fulfillmentSupplySourceId = value; }
         }
 
         /// <summary>
-        /// Sets the Orders property.
+        /// Sets the FulfillmentSupplySourceId property.
         /// </summary>
-        /// <param name="orders">Orders property.</param>
+        /// <param name="fulfillmentSupplySourceId">FulfillmentSupplySourceId property.</param>
         /// <returns>this instance.</returns>
-        public GetOrderResult WithOrders(Order[] orders)
+        public FulfillmentExecution WithFulfillmentSupplySourceId(string fulfillmentSupplySourceId)
         {
-            this._orders.AddRange(orders);
+            this._fulfillmentSupplySourceId = fulfillmentSupplySourceId;
             return this;
         }
 
         /// <summary>
-        /// Checks if Orders property is set.
+        /// Checks if FulfillmentSupplySourceId property is set.
         /// </summary>
-        /// <returns>true if Orders property is set.</returns>
-        public bool IsSetOrders()
+        /// <returns>true if FulfillmentSupplySourceId property is set.</returns>
+        public bool IsSetFulfillmentSupplySourceId()
         {
-            return this.Orders.Count > 0;
+            return this._fulfillmentSupplySourceId != null;
         }
 
 
         public override void ReadFragmentFrom(IMwsReader reader)
         {
-            _orders = reader.ReadList<Order>("Orders", "Order");
+            _fulfillmentSupplySourceId = reader.Read<string>("FulfillmentSupplySourceId");
         }
 
         public override void WriteFragmentTo(IMwsWriter writer)
         {
-            writer.WriteList("Orders", "Order", _orders);
+            writer.Write("FulfillmentSupplySourceId", _fulfillmentSupplySourceId);
         }
 
         public override void WriteTo(IMwsWriter writer)
         {
-            writer.Write("https://mws.amazonservices.com/Orders/2013-09-01", "GetOrderResult", this);
+            writer.Write("https://mws.amazonservices.com/Orders/2013-09-01", "FulfillmentExecution", this);
         }
 
-    public GetOrderResult (List<Order> orders) : base() {
-        this._orders = orders;
-    }
 
-        public GetOrderResult() : base()
+        public FulfillmentExecution() : base()
         {
         }
     }

@@ -29,7 +29,24 @@
                     <CountryCode>String</CountryCode>
                     <Phone>String</Phone>
                     <AddressType>String</AddressType>
+                    <isAddressSharingConfidential>true</isAddressSharingConfidential>
                 </ShippingAddress>
+                <DefaultShipFromLocationAddress>
+                    <Name>String</Name>
+                    <AddressLine1>String</AddressLine1>
+                    <AddressLine2>String</AddressLine2>
+                    <AddressLine3>String</AddressLine3>
+                    <City>String</City>
+                    <County>String</County>
+                    <District>String</District>
+                    <StateOrRegion>String</StateOrRegion>
+                    <Municipality>String</Municipality>
+                    <PostalCode>String</PostalCode>
+                    <CountryCode>String</CountryCode>
+                    <Phone>String</Phone>
+                    <AddressType>String</AddressType>
+                    <isAddressSharingConfidential>true</isAddressSharingConfidential>
+                </DefaultShipFromLocationAddress>
                 <OrderTotal>
                     <CurrencyCode>String</CurrencyCode>
                     <Amount>String</Amount>
@@ -76,11 +93,38 @@
                 <IsBusinessOrder>true</IsBusinessOrder>
                 <PurchaseOrderNumber>String</PurchaseOrderNumber>
                 <IsPrime>true</IsPrime>
+                <IsGlobalExpressEnabled>true</IsGlobalExpressEnabled>
                 <IsPremiumOrder>true</IsPremiumOrder>
                 <ReplacedOrderId>String</ReplacedOrderId>
                 <IsReplacementOrder>true</IsReplacementOrder>
                 <PromiseResponseDueDate>1969-07-21T02:56:03Z</PromiseResponseDueDate>
                 <IsEstimatedShipDateSet>true</IsEstimatedShipDateSet>
+                <TaxRegistrationDetails>
+                    <member>
+                        <taxRegistrationType>String</taxRegistrationType>
+                        <taxRegistrationId>String</taxRegistrationId>
+                        <taxRegistrationAuthority>
+                        <country>String</country>
+                        <state>String</state>
+                        <district>String</district>
+                        <province>String</province>
+                        <city>String</city>
+                        <warehouseId>String</warehouseId>
+                        </taxRegistrationAuthority>
+                    </member>
+                </TaxRegistrationDetails>
+                <IsSoldByAB>true</IsSoldByAB>
+                <BuyerIdentificationInformation>
+                    <BuyerCitizenId>String</BuyerCitizenId>
+                    <BuyerLegalName>String</BuyerLegalName>
+                </BuyerIdentificationInformation>
+                <FulfillmentInstruction>
+                    <FulfillmentSupplySourceId>String</FulfillmentSupplySourceId>
+                </FulfillmentInstruction>
+                <FulfillmentExecution>
+                    <FulfillmentSupplySourceId>String</FulfillmentSupplySourceId>
+                </FulfillmentExecution>
+                <IsISPU>true</IsISPU>
             </Order>
         </Orders>
     </ListOrdersByNextTokenResult>

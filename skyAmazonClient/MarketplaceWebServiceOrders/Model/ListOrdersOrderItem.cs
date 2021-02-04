@@ -8,7 +8,7 @@
  * CONDITIONS OF ANY KIND, either express or implied. See the License for the 
  * specific language governing permissions and limitations under the License.
  *******************************************************************************
- * Get Order Result
+ * List Orders Order Item
  * API Version: 2013-09-01
  * Library Version: 2021-01-06
  * Generated: Wed Jan 06 18:02:49 UTC 2021
@@ -17,73 +17,62 @@
 
 using System;
 using System.Xml;
-using System.Collections.Generic;
 using MWSClientCsRuntime;
 
 namespace MarketplaceWebServiceOrders.Model
 {
-    public class GetOrderResult : AbstractMwsObject
+    public class ListOrdersOrderItem : AbstractMwsObject
     {
 
-        private List<Order> _orders;
+        private string _storeChainStoreId;
 
         /// <summary>
-        /// Gets and sets the Orders property.
+        /// Gets and sets the StoreChainStoreId property.
         /// </summary>
-        public List<Order> Orders
+        public string StoreChainStoreId
         {
-            get
-            {
-                if(this._orders == null)
-                {
-                    this._orders = new List<Order>();
-                }
-                return this._orders;
-            }
-            set { this._orders = value; }
+            get { return this._storeChainStoreId; }
+            set { this._storeChainStoreId = value; }
         }
 
         /// <summary>
-        /// Sets the Orders property.
+        /// Sets the StoreChainStoreId property.
         /// </summary>
-        /// <param name="orders">Orders property.</param>
+        /// <param name="storeChainStoreId">StoreChainStoreId property.</param>
         /// <returns>this instance.</returns>
-        public GetOrderResult WithOrders(Order[] orders)
+        public ListOrdersOrderItem WithStoreChainStoreId(string storeChainStoreId)
         {
-            this._orders.AddRange(orders);
+            this._storeChainStoreId = storeChainStoreId;
             return this;
         }
 
         /// <summary>
-        /// Checks if Orders property is set.
+        /// Checks if StoreChainStoreId property is set.
         /// </summary>
-        /// <returns>true if Orders property is set.</returns>
-        public bool IsSetOrders()
+        /// <returns>true if StoreChainStoreId property is set.</returns>
+        public bool IsSetStoreChainStoreId()
         {
-            return this.Orders.Count > 0;
+            return this._storeChainStoreId != null;
         }
 
 
         public override void ReadFragmentFrom(IMwsReader reader)
         {
-            _orders = reader.ReadList<Order>("Orders", "Order");
+            _storeChainStoreId = reader.Read<string>("StoreChainStoreId");
         }
 
         public override void WriteFragmentTo(IMwsWriter writer)
         {
-            writer.WriteList("Orders", "Order", _orders);
+            writer.Write("StoreChainStoreId", _storeChainStoreId);
         }
 
         public override void WriteTo(IMwsWriter writer)
         {
-            writer.Write("https://mws.amazonservices.com/Orders/2013-09-01", "GetOrderResult", this);
+            writer.Write("https://mws.amazonservices.com/Orders/2013-09-01", "ListOrdersOrderItem", this);
         }
 
-    public GetOrderResult (List<Order> orders) : base() {
-        this._orders = orders;
-    }
 
-        public GetOrderResult() : base()
+        public ListOrdersOrderItem() : base()
         {
         }
     }

@@ -72,6 +72,8 @@
                     <CurrencyCode>String</CurrencyCode>
                     <Amount>String</Amount>
                 </CODFeeDiscount>
+                <DeemedResellerCategory>String</DeemedResellerCategory>
+                <IossNumber>String</IossNumber>
                 <IsGift>true</IsGift>
                 <GiftMessageText>String</GiftMessageText>
                 <GiftWrapLevel>String</GiftWrapLevel>
@@ -96,6 +98,7 @@
                 </TaxCollection>
                 <SerialNumberRequired>true</SerialNumberRequired>
                 <IsTransparency>true</IsTransparency>
+                <StoreChainStoreId>String</StoreChainStoreId>
             </OrderItem>
         </OrderItems>
     </ListOrderItemsResult>

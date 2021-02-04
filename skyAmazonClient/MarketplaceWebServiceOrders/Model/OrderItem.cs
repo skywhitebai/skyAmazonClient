@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2009-2018 Amazon Services. All Rights Reserved.
+ * Copyright 2009-2021 Amazon Services. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License"); 
  *
  * You may not use this file except in compliance with the License. 
@@ -10,8 +10,8 @@
  *******************************************************************************
  * Order Item
  * API Version: 2013-09-01
- * Library Version: 2018-10-31
- * Generated: Mon Oct 22 22:40:35 UTC 2018
+ * Library Version: 2021-01-06
+ * Generated: Wed Jan 06 18:02:49 UTC 2021
  */
 
 
@@ -46,6 +46,8 @@ namespace MarketplaceWebServiceOrders.Model
         private List<string> _promotionIds;
         private Money _codFee;
         private Money _codFeeDiscount;
+        private string _deemedResellerCategory;
+        private string _iossNumber;
         private bool? _isGift;
         private string _giftMessageText;
         private string _giftWrapLevel;
@@ -60,6 +62,7 @@ namespace MarketplaceWebServiceOrders.Model
         private TaxCollection _taxCollection;
         private bool? _serialNumberRequired;
         private bool? _isTransparency;
+        private string _storeChainStoreId;
 
         /// <summary>
         /// Gets and sets the ASIN property.
@@ -678,6 +681,64 @@ namespace MarketplaceWebServiceOrders.Model
         }
 
         /// <summary>
+        /// Gets and sets the DeemedResellerCategory property.
+        /// </summary>
+        public string DeemedResellerCategory
+        {
+            get { return this._deemedResellerCategory; }
+            set { this._deemedResellerCategory = value; }
+        }
+
+        /// <summary>
+        /// Sets the DeemedResellerCategory property.
+        /// </summary>
+        /// <param name="deemedResellerCategory">DeemedResellerCategory property.</param>
+        /// <returns>this instance.</returns>
+        public OrderItem WithDeemedResellerCategory(string deemedResellerCategory)
+        {
+            this._deemedResellerCategory = deemedResellerCategory;
+            return this;
+        }
+
+        /// <summary>
+        /// Checks if DeemedResellerCategory property is set.
+        /// </summary>
+        /// <returns>true if DeemedResellerCategory property is set.</returns>
+        public bool IsSetDeemedResellerCategory()
+        {
+            return this._deemedResellerCategory != null;
+        }
+
+        /// <summary>
+        /// Gets and sets the IossNumber property.
+        /// </summary>
+        public string IossNumber
+        {
+            get { return this._iossNumber; }
+            set { this._iossNumber = value; }
+        }
+
+        /// <summary>
+        /// Sets the IossNumber property.
+        /// </summary>
+        /// <param name="iossNumber">IossNumber property.</param>
+        /// <returns>this instance.</returns>
+        public OrderItem WithIossNumber(string iossNumber)
+        {
+            this._iossNumber = iossNumber;
+            return this;
+        }
+
+        /// <summary>
+        /// Checks if IossNumber property is set.
+        /// </summary>
+        /// <returns>true if IossNumber property is set.</returns>
+        public bool IsSetIossNumber()
+        {
+            return this._iossNumber != null;
+        }
+
+        /// <summary>
         /// Gets and sets the IsGift property.
         /// </summary>
         public bool IsGift
@@ -1083,6 +1144,35 @@ namespace MarketplaceWebServiceOrders.Model
             return this._isTransparency != null;
         }
 
+        /// <summary>
+        /// Gets and sets the StoreChainStoreId property.
+        /// </summary>
+        public string StoreChainStoreId
+        {
+            get { return this._storeChainStoreId; }
+            set { this._storeChainStoreId = value; }
+        }
+
+        /// <summary>
+        /// Sets the StoreChainStoreId property.
+        /// </summary>
+        /// <param name="storeChainStoreId">StoreChainStoreId property.</param>
+        /// <returns>this instance.</returns>
+        public OrderItem WithStoreChainStoreId(string storeChainStoreId)
+        {
+            this._storeChainStoreId = storeChainStoreId;
+            return this;
+        }
+
+        /// <summary>
+        /// Checks if StoreChainStoreId property is set.
+        /// </summary>
+        /// <returns>true if StoreChainStoreId property is set.</returns>
+        public bool IsSetStoreChainStoreId()
+        {
+            return this._storeChainStoreId != null;
+        }
+
 
         public override void ReadFragmentFrom(IMwsReader reader)
         {
@@ -1107,6 +1197,8 @@ namespace MarketplaceWebServiceOrders.Model
             _promotionIds = reader.ReadList<string>("PromotionIds", "PromotionId");
             _codFee = reader.Read<Money>("CODFee");
             _codFeeDiscount = reader.Read<Money>("CODFeeDiscount");
+            _deemedResellerCategory = reader.Read<string>("DeemedResellerCategory");
+            _iossNumber = reader.Read<string>("IossNumber");
             _isGift = reader.Read<bool?>("IsGift");
             _giftMessageText = reader.Read<string>("GiftMessageText");
             _giftWrapLevel = reader.Read<string>("GiftWrapLevel");
@@ -1121,6 +1213,7 @@ namespace MarketplaceWebServiceOrders.Model
             _taxCollection = reader.Read<TaxCollection>("TaxCollection");
             _serialNumberRequired = reader.Read<bool?>("SerialNumberRequired");
             _isTransparency = reader.Read<bool?>("IsTransparency");
+            _storeChainStoreId = reader.Read<string>("StoreChainStoreId");
         }
 
         public override void WriteFragmentTo(IMwsWriter writer)
@@ -1146,6 +1239,8 @@ namespace MarketplaceWebServiceOrders.Model
             writer.WriteList("PromotionIds", "PromotionId", _promotionIds);
             writer.Write("CODFee", _codFee);
             writer.Write("CODFeeDiscount", _codFeeDiscount);
+            writer.Write("DeemedResellerCategory", _deemedResellerCategory);
+            writer.Write("IossNumber", _iossNumber);
             writer.Write("IsGift", _isGift);
             writer.Write("GiftMessageText", _giftMessageText);
             writer.Write("GiftWrapLevel", _giftWrapLevel);
@@ -1160,6 +1255,7 @@ namespace MarketplaceWebServiceOrders.Model
             writer.Write("TaxCollection", _taxCollection);
             writer.Write("SerialNumberRequired", _serialNumberRequired);
             writer.Write("IsTransparency", _isTransparency);
+            writer.Write("StoreChainStoreId", _storeChainStoreId);
         }
 
         public override void WriteTo(IMwsWriter writer)
