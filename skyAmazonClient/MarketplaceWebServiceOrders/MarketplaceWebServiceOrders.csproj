@@ -48,7 +48,10 @@
     <Compile Include="Mock\MarketplaceWebServiceOrdersMock.cs" />
     <Compile Include="Model\Address.cs" />
     <Compile Include="Model\BuyerCustomizedInfoDetail.cs" />
+    <Compile Include="Model\BuyerIdentificationInformation.cs" />
     <Compile Include="Model\BuyerTaxInfo.cs" />
+    <Compile Include="Model\FulfillmentExecution.cs" />
+    <Compile Include="Model\FulfillmentInstruction.cs" />
     <Compile Include="Model\GetOrderRequest.cs" />
     <Compile Include="Model\GetOrderResponse.cs" />
     <Compile Include="Model\GetOrderResult.cs" />
@@ -66,6 +69,7 @@
     <Compile Include="Model\ListOrdersByNextTokenRequest.cs" />
     <Compile Include="Model\ListOrdersByNextTokenResponse.cs" />
     <Compile Include="Model\ListOrdersByNextTokenResult.cs" />
+    <Compile Include="Model\ListOrdersOrderItem.cs" />
     <Compile Include="Model\ListOrdersRequest.cs" />
     <Compile Include="Model\ListOrdersResponse.cs" />
     <Compile Include="Model\ListOrdersResult.cs" />
@@ -80,6 +84,8 @@
     <Compile Include="Model\ResponseMetadata.cs" />
     <Compile Include="Model\TaxClassification.cs" />
     <Compile Include="Model\TaxCollection.cs" />
+    <Compile Include="Model\TaxRegistrationAuthority.cs" />
+    <Compile Include="Model\TaxRegistrationDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -37,9 +37,9 @@ F:\code\github\skyAmazonClient\skyAmazonClient\skyAmazonClient\obj\Debug\skyAmaz
 D:\src\amazonform\skyAmazonClient\skyAmazonClient\skyAmazonClient\obj\Debug\skyAmazonClient.DealInfoForm.resources
 D:\src\amazonform\skyAmazonClient\skyAmazonClient\skyAmazonClient\obj\Debug\skyAmazonClient.LoginForm.resources
 D:\src\amazonform\skyAmazonClient\skyAmazonClient\skyAmazonClient\obj\Debug\skyAmazonClient.MainForm.resources
-F:\code\github\skyAmazonClient\skyAmazonClient\skyAmazonClient\bin\Debug\MWSRecommendationsSectionService.dll
-F:\code\github\skyAmazonClient\skyAmazonClient\skyAmazonClient\bin\Debug\MWSRecommendationsSectionService.pdb
 F:\code\github\skyAmazonClient\skyAmazonClient\skyAmazonClient\obj\Debug\skyAmazonClient.TestForm.resources
 D:\src\amazonform\skyAmazonClient\skyAmazonClient\skyAmazonClient\obj\Debug\skyAmazonClient.TestForm.resources
 D:\src\amazonform\skyAmazonClient\skyAmazonClient\skyAmazonClient\bin\Debug\FBAInventoryServiceMWS.dll
 D:\src\amazonform\skyAmazonClient\skyAmazonClient\skyAmazonClient\bin\Debug\FBAInventoryServiceMWS.pdb
+F:\code\github\skyAmazonClient\skyAmazonClient\skyAmazonClient\bin\Debug\FBAInventoryServiceMWS.dll
+F:\code\github\skyAmazonClient\skyAmazonClient\skyAmazonClient\bin\Debug\FBAInventoryServiceMWS.pdb
